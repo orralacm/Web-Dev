@@ -1,0 +1,48 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h2>My First JavaScript</h2>
+
+        <p id="demo">JavaScript can change HTML content.</p>
+
+        <button type="reset" onclick="document.getElementById('demo').innerHTML = 'JavaScript can change HTML content.'">Reset text</button>
+        <br><br>
+
+        <button type="button" onclick="document.getElementById('demo').innerHTML = Date()">
+        Click me to display Date and Time.
+        </button>
+        <br><br>
+
+        <button type="button" onclick='document.getElementById("demo").innerHTML = "Hello JavaScript!"'>Click Me!</button>
+        <br>
+
+        <p>In this case JavaScript changes the value of the src (source) attribute of an image.</p>
+
+        <button onclick="document.getElementById('myImage').src='pic_bulbon.gif'">Turn on the light</button>
+        
+        <img id="myImage" src="pic_bulboff.gif" style="width:100px">
+
+        <button onclick="document.getElementById('myImage').src='pic_bulboff.gif'">Turn off the light</button>
+        <hr>
+
+        <h2>What Can JavaScript Do?</h2>
+
+        <p id="demo2">JavaScript can change the style of an HTML element.</p>
+
+        <button type="button" onclick="document.getElementById('demo2').style.fontSize='35px'">Click to increase font size</button> <br><br>
+        <button type="button" onclick="document.getElementById('demo2').style.display='none'">Click to hide the HTML element</button> <br><br>
+        <button type="button" onclick="document.getElementById('demo2').style.display='block'">Click to show the HTML element</button> <br><br>
+        <hr>
+        
+        <h2>JavaScript in Body</h2>
+
+        <p id="demo3"></p>
+
+        <script>
+        document.getElementById("demo3").innerHTML = "My First JavaScript";
+        </script>
+
+    </body>
+</html>
