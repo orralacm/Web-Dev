@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h1>JavaScript String Methods</h1>
+
+    <p>Primitive values, like "John Doe", cannot have properties or methods (because they are not objects).</p>
+    <p>But with JavaScript, methods and properties are also available to 
+    primitive values, because JavaScript treats primitive values as objects 
+    when executing methods and properties.</p>
+
+    <h2>String Length</h2>
+
+    <p>The <strong>length</strong> property returns the length of a string:</p>
+
+    <p id="demo"></p>
+
+    <script>
+        var txt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        var sln = txt.length;
+        document.getElementById("demo").innerHTML = sln;
+    </script>
+
+    <h2>Finding a String in a String</h2>
+
+    <p>The <strong>indexOf()</strong> method returns the position of the first occurrence of a specified text:</p>
+
+    <p id="demo02"></p>
+
+    <script>
+        var str = "Please locate where 'locate' occurs!";
+        var pos = str.indexOf("locate");
+        document.getElementById("demo02").innerHTML = pos;
+    </script>
+
+    <p style="background-color:yellow; width:500px;">JavaScript counts positions from zero.<br>
+        0 is the first position in a string, 1 is the second, 2 is the third ...</p>
+
+    <p>The <strong>lastIndexOf()</strong> method returns the position of the last occurrence of a specified text:</p>
+
+    <p id="demo03"></p>
+    
+    <script>
+        var str = "Please locate where 'locate' occurs!";
+        var pos = str.lastIndexOf("locate");
+        document.getElementById("demo03").innerHTML = pos;
+    </script>
+
+    <p>Both <strong>indexOf()</strong>, and <strong>lastIndexOf()</strong> return -1 if the text is not found:</p>
+
+    <p id="demo04"></p>
+
+    <script>
+        var str = "Please locate where 'locate' occurs!";
+        var pos = str.indexOf("John");
+        document.getElementById("demo04").innerHTML = pos;
+    </script>
+
+    <p>The <strong>indexOf()</strong> method accepts a second parameter as the starting position for the search:</p>
+
+    <p id="demo05"></p>
+
+    <script>
+        var str = "Please locate where 'locate' occurs!";
+        var pos = str.indexOf("locate",15);
+        document.getElementById("demo05").innerHTML = pos;
+    </script>
+
+    <p>The <strong>lastIndexOf()</strong> method accepts a second parameter as the starting position for the search.</p>
+    <p>Remember that the <strong>lastIndexOf()</strong> method searches backwards, so position 15 means start the search at position 15, and search to the beginning.</p>
+    <p>Position 15 is position 15 from the beginning.</p>
+
+    <p id="demo06"></p>
+
+    <script>
+        var str = "Please locate where 'locate' occurs!";
+        var pos = str.lastIndexOf("locate", 15);
+        document.getElementById("demo06").innerHTML = pos;
+    </script>
+
+    <h2>Searching for a String in a String</h2>
+
+    <p>The <strong>search()</strong> method returns the position of the first occurrence of a specified text in a string:</p>
+
+    <p id="demo07"></p>
+
+    <script>
+        var str = "Please locate where 'locate' occurs!";
+        var pos = str.search("locate");
+        document.getElementById("demo07").innerHTML = pos;
+    </script>
+
+    <h2>Extracting String Parts</h2>
+
+    <p>There are 3 methods for extracting a part of a string:</p>
+
+    <ul>
+        <li>slice(start, end)</li>
+        <li>substring(start, end)</li>
+        <li>substr(start, length)</li>
+    </ul>
+
+    <h2>The slice() Method</h2>
+
+    <p><strong>slice()</strong> extracts a part of a string and returns the extracted part in a new string.</p>
+    <p>The method takes 2 parameters: the start position, and the end position (end not included).</p>
+
+    <p>This example slices out a portion of a string from position 7 to position 12 (13-1):</p>
+
+    <p id="demo08"></p>
+
+    <script>
+        var str = "Apple, Banana, Kiwi";
+        var res = str.slice(7,13);
+        document.getElementById("demo08").innerHTML = res; 
+    </script>
+    
+    <p style="background-color:yellow; width:500px;">Remember: JavaScript counts positions from zero. First position is 0.</p>
+
+    <p>If a parameter is negative, the position is counted from the end of the string.</p>
+
+    <p>This example slices out a portion of a string from position -12 to position -6:</p>
+
+    <p id="demo09"></p>
+
+    <script>
+        var str = "Apple, Banana, Kiwi";
+        var res = str.slice(-12,-6);
+        document.getElementById("demo09").innerHTML = res;
+    </script>
+
+    <p>If you omit the second parameter, the method will slice out the rest of the string:</p>
+
+    <p id="demo10"></p>
+
+    <script>
+        var str = "Apple, Banana, Kiwi";
+        var res = str.slice(7);
+        document.getElementById("demo10").innerHTML = res;
+    </script>
+
+    <p>or, counting from the end:</p>
+
+    <p id="demo11"></p>
+
+    <script>
+        var str = "Apple, Banana, Kiwi";
+        var res = str.slice(-12) 
+        document.getElementById("demo11").innerHTML = res;
+    </script>
+
+    <h2>The substring() Method</h2>
+
+    <p><strong>substring()</strong> is similar to <strong>slice()</strong>.</p>
+
+    <p>The difference is that substring() cannot accept negative indexes.</p>
+
+    <p id="demo12"></p>
+
+    <script>
+        var str = "Apple, Banana, Kiwi";
+        var res = str.substring(7,13);
+        document.getElementById("demo12").innerHTML = res;
+    </script>
+
+    <p>If you omit the second parameter, substring() will slice out the rest of the string.</p>
+
+    <h2>The substr() Method</h2>
+
+    <p><strong>substr()</strong> is similar to <strong>slice()</strong>.</p>
+
+    <p>The difference is that the second parameter specifies the <strong>length</strong> of the extracted part.</p>
+
+    <p id="demo13"></p>
+
+    <script>
+        var str = "Apple, Banana, Kiwi";
+        var res = str.substr(7,6);
+        document.getElementById("demo13").innerHTML = res;
+    </script>
+
+    <p>If you omit the second parameter, substr() will slice out the rest of the string.</p>
+
+    <p id="demo14"></p>
+
+    <script>
+        var str = "Apple, Banana, Kiwi";
+        var res = str.substr(7);
+        document.getElementById("demo14").innerHTML = res;
+    </script>
+
+    <p>If the first parameter is negative, the position counts from the end of the string.</p>
+
+    <p id="demo15"></p>
+
+    <script>
+        var str = "Apple, Banana, Kiwi";
+        var res = str.substr(-4);
+        document.getElementById("demo15").innerHTML = res;
+    </script>
+
+    <h2>Replacing String Content</h2>
+
+    <p>The replace() method replaces a specified value with another value in a string:</p>
+
+    <p>Replace "Microsoft" with "W3Schools" in the paragraph below:</p>
+
+    <button onclick="myFunction()">Try it</button>
+
+    <p id="demo16">Please visit Microsoft!</p>
+
+    <script>
+        function myFunction() {
+        var str = document.getElementById("demo").innerHTML; 
+        var txt = str.replace("Microsoft","W3Schools");
+        document.getElementById("demo16").innerHTML = txt;
+        }
+    </script>
+
+    <p style="background-color:yellow; width:500px">The replace() method does not change the string it is called on. It returns a new string.</p>
+
+    <p>By default, the replace() method replaces only the first match:</p>
+
+    <p>Replace "Microsoft" with "W3Schools" in the paragraph below:</p>
+
+    <button onclick="myFunction()">Try it</button>
+
+    <p id="demo17">Please visit Microsoft and Microsoft!</p>
+
+    <script>
+        function myFunction() {
+        var str = document.getElementById("demo").innerHTML; 
+        var txt = str.replace("Microsoft","W3Schools");
+        document.getElementById("demo17").innerHTML = txt;
+        }
+    </script>
+
+    <p>By default, the replace() method is case sensitive. Writing MICROSOFT (with upper-case) will not work.</p>
+
+    <p>To replace case insensitive, use a regular expression with an /i flag (insensitive):</p>
+
+    <p>Replace "Microsoft" with "W3Schools" in the paragraph below:</p>
+
+    <button onclick="myFunction()">Try it</button>
+
+    <p id="demo18">Please visit Microsoft!</p>
+
+    <script>
+        function myFunction() {
+        var str = document.getElementById("demo").innerHTML; 
+        var txt = str.replace(/MICROSOFT/i,"W3Schools");
+        document.getElementById("demo18").innerHTML = txt;
+        }
+    </script>
+
+    <p style="background-color:yellow; width:500px">Note that regular expressions are written without quotes.</p>
+
+    <p>To replace all matches, use a regular expression with a /g flag (global match):</p>
+
+    <p>Replace all occurrences of "Microsoft" with "W3Schools" in the paragraph below:</p>
+
+    <button onclick="myFunction()">Try it</button>
+
+    <p id="demo19">Please visit Microsoft and Microsoft!</p>
+
+    <script>
+        function myFunction() {
+        var str = document.getElementById("demo19").innerHTML; 
+        var txt = str.replace(/Microsoft/g,"W3Schools");
+        document.getElementById("demo19").innerHTML = txt;
+        }
+    </script>
+
+    <h2>Converting to Upper and Lower Case</h2>
+
+    <p>A string is converted to upper case with <strong>toUpperCase()</strong>:</p>
+
+    <button onclick="myFunction()">Try it</button>
+
+    <p id="demo20">Hello World!</p>
+
+    <script>
+        function myFunction() {
+        var text = document.getElementById("demo20").innerHTML;
+        document.getElementById("demo20").innerHTML = text.toUpperCase();
+        }
+    </script>
+
+    <p>A string is converted to lower case with <strong>toLowerCase()</strong>:</p>
+
+    <button onclick="myFunction()">Try it</button>
+
+    <p id="demo">Hello World!</p>
+
+    <script>
+        function myFunction() {
+        var text = document.getElementById("demo").innerHTML;
+        document.getElementById("demo").innerHTML = text.toLowerCase();
+        }
+    </script>
+
+
+
+</body>
+</html>
