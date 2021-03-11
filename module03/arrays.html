@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h1>JavaScript Arrays</h1>
+
+    <p>JavaScript arrays are used to store multiple values in a single variable.</p>
+
+    <h2>What is an Array?</h2>
+
+    <p>An array is a special variable, which can hold more than one value at a time.</p>
+
+    <h2>Creating an Array</h2>
+
+    <p id="demo"></p>
+
+    <script>
+        var cars = ["Saab", "Volvo", "BMW"];
+        document.getElementById("demo").innerHTML = cars;
+    </script>
+
+    <h2>Using the JavaScript Keyword new</h2>
+
+    <p id="demo2"></p>
+
+    <script>
+        var cars = new Array("Saab", "Volvo", "BMW");
+        document.getElementById("demo2").innerHTML = cars;
+    </script>
+
+    <p style="background-color: yellow; width: 500px;">The two examples above do exactly the same. There is no need to use new Array().</p>
+
+    <h2>Access the Elements of an Array</h2>
+
+    <p>You access an array element by referring to the index number.</p>
+
+    <p>JavaScript array elements are accessed using numeric indexes (starting from 0).</p>
+
+    <p id="demo3"></p>
+
+    <script>
+        var cars = ["Saab", "Volvo", "BMW"];
+        document.getElementById("demo3").innerHTML = cars[0];
+    </script>
+
+    <h2>Changing an Array Element</h2>
+
+    <p>JavaScript array elements are accessed using numeric indexes (starting from 0).</p>
+
+    <p id="demo4"></p>
+
+    <script>
+        var cars = ["Saab", "Volvo", "BMW"];
+        cars[0] = "Opel";
+        document.getElementById("demo4").innerHTML = cars;
+    </script>
+
+    <h2>Access the Full Array</h2>
+
+    <p>With JavaScript, the full array can be accessed by referring to the array name:</p>
+
+    <p id="demo5"></p>
+
+    <script>
+        var cars = ["Saab", "Volvo", "BMW"];
+        document.getElementById("demo5").innerHTML = cars;
+    </script>
+
+    <h2>Arrays are Objects</h2>
+
+    <p>Arrays are a special type of objects. The typeof operator in JavaScript returns "object" for arrays.</p>
+    <p>But, JavaScript arrays are best described as arrays.</p>
+
+    <p>Arrays use <strong>numbers</strong> to access its "elements". In this example, person[0] returns John:</p>
+
+    <p id="demo6"></p>
+    
+    <script>
+        var person = ["John", "Doe", 46];
+        document.getElementById("demo6").innerHTML = person[0];
+    </script>
+
+    <p>Objects use names to access its "members". In this example, person.firstName returns John:</p>
+
+    <p id="demo7"></p>
+
+    <script>
+        var person = {firstName:"John", lastName:"Doe", age:46};
+        document.getElementById("demo7").innerHTML = person["firstName"];
+    </script>
+
+    <h2>Array Elements Can Be Objects</h2>
+
+    <p>JavaScript variables can be objects. Arrays are special kinds of objects.<br>
+    Because of this, you can have variables of different types in the same Array.<br>
+    You can have objects in an Array. You can have functions in an Array. You can have arrays in an Array.</p>
+
+    <h2>Array Properties and Methods</h2>
+
+    <p>The real strength of JavaScript arrays are the built-in array properties and methods:</p>
+
+    <h2>The length Property</h2>
+
+    <p>The length property of an array returns the length of an array (the number of array elements).</p>
+
+    <p id="demo8"></p>
+
+    <script>
+        var fruits = ["Banana", "Orange", "Apple", "Mango"];
+        document.getElementById("demo8").innerHTML = fruits.length;
+    </script>
+
+    <p style="background-color: yellow; width:500px;">The length property is always one more than the highest array index.</p>
+
+    <h2>Accessing the First Array Element</h2>
+
+    <p id="demo9"></p>
+
+    <script>
+        var fruits = ["Banana", "Orange", "Apple", "Mango"];
+        var first = fruits[0];
+        document.getElementById("demo9").innerHTML = first;
+    </script>
+
+    <h2>Accessing the Last Array Element</h2>
+
+    <p id="demo10"></p>
+
+    <script>
+        var fruits = ["Banana", "Orange", "Apple", "Mango"];
+        var last = fruits[fruits.length-1];
+        document.getElementById("demo10").innerHTML = last;
+    </script>
+
+    <h2>Looping Array Elements</h2>
+
+    <p>The best way to loop through an array is using a standard for loop:</p>
+
+    <p id="demo11"></p>
+
+    <script>
+        var fruits, text, fLen, i;
+        fruits = ["Banana", "Orange", "Apple", "Mango"];
+        fLen = fruits.length;
+
+        text = "<ul>";
+        for (i = 0; i < fLen; i++) {
+        text += "<li>" + fruits[i] + "</li>";
+        }
+        text += "</ul>";
+
+        document.getElementById("demo11").innerHTML = text;
+    </script>
+
+    <p>You can also use the Array.forEach() function:</p>
+
+    <p>Array.forEach() calls a function for each array element.</p>
+
+    <p>Array.forEach() is not supported in Internet Explorer 8 or earlier.</p>
+
+    <p id="demo12"></p>
+
+    <script>
+        var fruits, text;
+        fruits = ["Banana", "Orange", "Apple", "Mango"];
+
+        text = "<ul>";
+        fruits.forEach(myFunction);
+        text += "</ul>";
+        document.getElementById("demo12").innerHTML = text;
+
+        function myFunction(value) {
+        text += "<li>" + value + "</li>";
+        } 
+    </script>
+
+    <h2>Adding Array Elements</h2>
+
+
+
+
+
+    
+
+</body>
+</html>

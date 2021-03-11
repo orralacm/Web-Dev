@@ -211,7 +211,7 @@
 
     <script>
         function myFunction() {
-        var str = document.getElementById("demo").innerHTML; 
+        var str = document.getElementById("demo16").innerHTML; 
         var txt = str.replace("Microsoft","W3Schools");
         document.getElementById("demo16").innerHTML = txt;
         }
@@ -223,13 +223,13 @@
 
     <p>Replace "Microsoft" with "W3Schools" in the paragraph below:</p>
 
-    <button onclick="myFunction()">Try it</button>
+    <button onclick="myFunction02()">Try it</button>
 
     <p id="demo17">Please visit Microsoft and Microsoft!</p>
 
     <script>
-        function myFunction() {
-        var str = document.getElementById("demo").innerHTML; 
+        function myFunction02() {
+        var str = document.getElementById("demo17").innerHTML; 
         var txt = str.replace("Microsoft","W3Schools");
         document.getElementById("demo17").innerHTML = txt;
         }
@@ -241,13 +241,13 @@
 
     <p>Replace "Microsoft" with "W3Schools" in the paragraph below:</p>
 
-    <button onclick="myFunction()">Try it</button>
+    <button onclick="myFunction03()">Try it</button>
 
     <p id="demo18">Please visit Microsoft!</p>
 
     <script>
-        function myFunction() {
-        var str = document.getElementById("demo").innerHTML; 
+        function myFunction03() {
+        var str = document.getElementById("demo18").innerHTML; 
         var txt = str.replace(/MICROSOFT/i,"W3Schools");
         document.getElementById("demo18").innerHTML = txt;
         }
@@ -259,12 +259,12 @@
 
     <p>Replace all occurrences of "Microsoft" with "W3Schools" in the paragraph below:</p>
 
-    <button onclick="myFunction()">Try it</button>
+    <button onclick="myFunction04()">Try it</button>
 
     <p id="demo19">Please visit Microsoft and Microsoft!</p>
 
     <script>
-        function myFunction() {
+        function myFunction04() {
         var str = document.getElementById("demo19").innerHTML; 
         var txt = str.replace(/Microsoft/g,"W3Schools");
         document.getElementById("demo19").innerHTML = txt;
@@ -275,12 +275,12 @@
 
     <p>A string is converted to upper case with <strong>toUpperCase()</strong>:</p>
 
-    <button onclick="myFunction()">Try it</button>
+    <button onclick="myFunction05()">Try it</button>
 
     <p id="demo20">Hello World!</p>
 
     <script>
-        function myFunction() {
+        function myFunction05() {
         var text = document.getElementById("demo20").innerHTML;
         document.getElementById("demo20").innerHTML = text.toUpperCase();
         }
@@ -288,18 +288,170 @@
 
     <p>A string is converted to lower case with <strong>toLowerCase()</strong>:</p>
 
-    <button onclick="myFunction()">Try it</button>
+    <button onclick="myFunction06()">Try it</button>
 
-    <p id="demo">Hello World!</p>
+    <p id="demo21">Hello World!</p>
 
     <script>
-        function myFunction() {
-        var text = document.getElementById("demo").innerHTML;
-        document.getElementById("demo").innerHTML = text.toLowerCase();
+        function myFunction06() {
+        var text = document.getElementById("demo21").innerHTML;
+        document.getElementById("demo21").innerHTML = text.toLowerCase();
         }
     </script>
 
+    <h2>The concat() Method</h2>
 
+    <p>The concat() method joins two or more strings:</p>
+
+    <p id="demo22"></p>
+
+    <script>
+        var text1 = "Hello";
+        var text2 = "World!";
+        var text3 = text1.concat(" ",text2);
+        document.getElementById("demo22").innerHTML = text3;
+    </script>
+
+    <p>The concat() method can be used instead of the plus operator.</p>
+
+    <p style="background-color:yellow; width:500px">All string methods return a new string. They don't modify the original string.
+    Formally said: Strings are immutable: Strings cannot be changed, only replaced.</p>
+
+    <h2>String.trim()</h2>
+
+    <p>The trim() method removes whitespace from both sides of a string.</p>
+
+    <p>Click the button to alert the string with removed whitespace.</p>
+
+    <button onclick="myFunction07()">Try it</button>
+
+    <script>
+        function myFunction07() {
+        var str = "     Hello World!     ";
+        alert(str.trim());
+        }
+    </script>
+
+    <h2>JavaScript String Padding</h2>
+
+    <p>ECMAScript 2017 added two String methods: padStart and padEnd to support padding at the beginning and at the end of a string.</p>
+
+    <p>The padStart() method pads a string with another string:</p>
+
+    <p id="demo23">1</p>
+
+    <script>
+        let str = "5";
+        str = str.padStart(4,0);
+        document.getElementById("demo23").innerHTML = str;
+    </script>
+
+    <p>The padEnd() method pads a string with another string:</p>
+
+    <p id="demo24">1</p>
+
+    <script>
+        let str = "5";
+        str = str.padEnd(4,0);
+        document.getElementById("demo24").innerHTML = str;
+    </script>
+
+    <h2>Extracting String Characters</h2>
+
+    <p>There are 3 methods for extracting string characters:</p>
+
+    <ul>
+        <li>charAt(position)</li>
+        <li>charCodeAt(position)</li>
+        <li>Property access [ ]</li>
+    </ul>
+
+    <h2>The charAt() Method</h2>
+
+    <p>The charAt() method returns the character at a specified index (position) in a string:</p>
+
+    <p id="demo25"></p>
+
+    <script>
+        var str = "HELLO WORLD";
+        document.getElementById("demo25").innerHTML = str.charAt(0);
+    </script>
+
+    <h2>The charCodeAt() Method</h2>
+
+    <p>The charCodeAt() method returns the unicode of the character at a given position in a string:</p>
+
+    <p id="demo26"></p>
+
+    <script>
+        var str = "HELLO WORLD";
+        document.getElementById("demo26").innerHTML = str.charCodeAt(0);
+    </script>
+
+    <p>The method returns a UTF-16 code (an integer between 0 and 65535).</p>
+
+    <h2>Property Access</h2>
+
+    <p>ECMAScript 5 allows property access [ ] on strings:</p>
+
+    <p id="demo27"></p>
+
+    <script>
+        var str = "HELLO WORLD";
+        document.getElementById("demo27").innerHTML = str[0];
+    </script>
+
+    <div style="background-color:yellow; width:500px">
+        <p>Property access might be a little unpredictable:</p>
+        <ul>
+            <li>It makes strings look like arrays (but they are not)</li>
+            <li>If no character is found, [ ] returns undefined, while charAt() returns an empty string.</li>
+            <li>It is read only. str[0] = "A" gives no error (but does not work!)</li>
+        </ul>
+    </div>
+
+    <p id="demo28"></p>
+
+    <script>
+        var str = "HELLO WORLD";
+        str[0] = "A";  // Does not work
+        document.getElementById("demo28").innerHTML = str[0];
+    </script>
+
+    <h2A>Converting a String to an Array</h2A>
+
+    <p>A string can be converted to an array with the split() method:</p>
+
+    <p>Click "Try it" to display the first array element, after a string split.</p>
+
+    <button onclick="myFunction()">Try it</button>
+
+    <p id="demo29"></p>
+
+    <script>
+        function myFunction() {
+        var str = "a,b,c,d,e,f";
+        var arr = str.split(",");
+        document.getElementById("demo29").innerHTML = arr[0];
+        }
+    </script>
+
+    <p>If the separator is omitted, the returned array will contain the whole string in index [0].</p>
+
+    <p>If the separator is "", the returned array will be an array of single characters:</p>
+
+    <p id="demo30"></p>
+
+    <script>
+        var str = "Hello";
+        var arr = str.split("");
+        var text = "";
+        var i;
+        for (i = 0; i < arr.length; i++) {
+        text += arr[i] + "<br>"
+        }
+        document.getElementById("demo30").innerHTML = text;
+    </script>
 
 </body>
 </html>
