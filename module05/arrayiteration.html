@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h1>JavaScript Array Iteration Methods</h1>
+
+    <p>Array iteration methods operate on every array item.</p>
+
+    <h2>JavaScript Array.forEach()</h2>
+
+    <p>The forEach() method calls a function (a callback function) once for each array element.</p>
+
+    <p id="demo"></p>
+
+    <script>
+        var txt = "";
+        var numbers = [45, 4, 9, 16, 25];
+        numbers.forEach(myFunction);
+        document.getElementById("demo").innerHTML = txt;
+
+        function myFunction(value, index, array) {
+        txt = txt + value + "<br>"; 
+        }
+    </script>
+
+    <p>When a callback function uses only the value parameter, the index and array parameters can be omitted.</p>
+
+    <h2>Array.map()</h2>
+
+    <p>The map() method creates a new array by performing a function on each array element.<br>
+    The map() method does not execute the function for array elements without values.<br>
+    The map() method does not change the original array.</p>
+
+    <p>This example multiplies each array value by 2:</p>
+
+    <p id="demo2"></p>
+
+    <script>
+        var numbers1 = [45, 4, 9, 16, 25];
+        var numbers2 = numbers1.map(myFunction);
+
+        document.getElementById("demo2").innerHTML = numbers2;
+
+        function myFunction(value, index, array) {
+        return value * 2;
+        }
+    </script>
+
+    <p>When a callback function uses only the value parameter, the index and array parameters can be omitted.</p>
+
+    <h2>Array.filter()</h2>
+
+    <p>The filter() method creates a new array with array elements that passes a test.</p>
+
+    <p>This example creates a new array from elements with a value larger than 18:</p>
+
+    <p id="demo3"></p>
+
+    <script>
+        var numbers = [45, 4, 9, 16, 25];
+        var over18 = numbers.filter(myFunction);
+
+        document.getElementById("demo3").innerHTML = over18;
+
+        function myFunction(value, index, array) {
+        return value > 18;
+        }
+    </script>
+
+    <p>In the example above, the callback function does not use the index and array parameters, so they can be omitted.</p>
+
+    <h2>Array.reduce()</h2>
+
+    <p>The reduce() method runs a function on each array element to produce (reduce it to) a single value.<br>
+    The reduce() method works from left-to-right in the array.</p>
+
+    <p style="background-color: yellow; width: 500px;">The reduce() method does not reduce the original array.</p>
+
+    <p>This example finds the sum of all numbers in an array:</p>
+
+    <p id="demo4"></p>
+
+    <script>
+        var numbers = [45, 4, 9, 16, 25];
+        var sum = numbers.reduce(myFunction);
+
+        document.getElementById("demo4").innerHTML = "The sum is " + sum;
+
+        function myFunction(total, value, index, array) {
+        return total + value;
+        }
+    </script>
+
+    <p>Note that the function takes 4 arguments:</p>
+
+    <ul>
+        <li>The total (the initial value / previously returned value)</li>
+        <li>The item value</li>
+        <li>The item index</li>
+        <li>The array itself</li>
+    </ul>
+                
+        <p>The example above does not use the index and array parameters, so they can be omitted.</p>
+
+        <p>The reduce() method can accept an initial value:</p>
+
+        <p>This example finds the sum of all numbers in an array:</p>
+
+    <p id="demo5"></p>
+
+    <script>
+        var numbers = [45, 4, 9, 16, 25];
+        var sum = numbers.reduce(myFunction, 100);
+
+        document.getElementById("demo5").innerHTML = "The sum is " + sum;
+
+        function myFunction(total, value) {
+        return total + value;
+        }
+    </script>
+
+    <h2>Array.reduceRight()</h2>
+
+    <p>The reduceRight() method runs a function on each array element to produce (reduce it to) a single value.<br>
+    The reduceRight() works from right-to-left in the array.</p>
+
+    <p style="background-color: yellow; width: 500px;">The reduceRight() method does not reduce the original array.</p>
+
+    <p>This example finds the sum of all numbers in an array:</p>
+
+    <p id="demo6"></p>
+
+    <script>
+        var numbers = [45, 4, 9, 16, 25];
+        var sum = numbers.reduceRight(myFunction);
+
+        document.getElementById("demo6").innerHTML = "The sum is " + sum;
+
+        function myFunction(total, value, index, array) {
+        return total + value;
+        }
+    </script>
+
+    <p>Note that the function takes 4 arguments:</p>
+
+    <ul>
+        <li>The total (the initial value / previously returned value)</li>
+        <li>The item value</li>
+        <li>The item index</li>
+        <li>The array itself</li>
+    </ul>
+                
+    <p>The example above does not use the index and array parameters, so they can be omitted.</p>
+
+    <h2>Array.every()</h2>
+
+    <p>The every() method check if all array values pass a test.</p>
+
+    <p>This example check if all array values are larger than 18:</p>
+
+    <p id="demo7"></p>
+
+    <script>
+        var numbers = [45, 4, 9, 16, 25];
+        var allOver18 = numbers.every(myFunction);
+
+        document.getElementById("demo7").innerHTML = "All over 18 is " + allOver18;
+
+        function myFunction(value, index, array) {
+        return value > 18;
+        }
+    </script>
+
+    <p>When a callback function uses the first parameter only (value), the other parameters can be omitted.</p>
+
+    <h2>Array.some()</h2>
+
+    <p>The some() method check if some array values pass a test.</p>
+
+    <p>This example check if some array values are larger than 18:</p>
+
+    <p id="demo8"></p>
+
+    <script>
+        var numbers = [45, 4, 9, 16, 25];
+        var someOver18 = numbers.some(myFunction);
+
+        document.getElementById("demo8").innerHTML = "Some over 18 is " + someOver18;
+
+        function myFunction(value, index, array) {
+        return value > 18;
+        }
+    </script>
+
+    <p>When a callback function uses the first parameter only (value), the other parameters can be omitted.</p>
+
+    <h2>Array.indexOf()</h2>
+
+    <p>The indexOf() method searches an array for an element value and returns its position.</p>
+
+    <p id="demo9"></p>
+
+    <script>
+        var fruits = ["Apple", "Orange", "Apple", "Mango"];
+        var a = fruits.indexOf("Apple");
+        document.getElementById("demo9").innerHTML = "Apple is found in position " + a;
+    </script>
+
+    <p>Array.indexOf() returns -1 if the item is not found.</p>
+
+    <p>If the item is present more than once, it returns the position of the first occurrence.</p>
+
+    <h2>Array.lastIndexOf()</h2>
+
+    <p>Array.lastIndexOf() is the same as Array.indexOf(), but returns the position of the last occurrence of the specified element.</p>
+
+    <p id="demo10"></p>
+
+    <script>
+        var fruits = ["Apple", "Orange", "Apple", "Mango"];
+        var a = fruits.lastIndexOf("Apple");
+        document.getElementById("demo10").innerHTML = "Apple is found in position " + (a + 1);
+    </script>
+
+    <h2>Array.find()</h2>
+
+    <p>The find() method returns the value of the first array element that passes a test function.</p>
+
+    <p>This example finds (returns the value of) the first element that is larger than 18:</p>
+
+    <p id="demo11"></p>
+
+    <script>
+        var numbers = [4, 9, 16, 25, 29];
+        var first = numbers.find(myFunction);
+
+        document.getElementById("demo11").innerHTML = "First number over 18 is " + first;
+
+        function myFunction(value, index, array) {
+        return value > 18;
+        }
+    </script>
+
+    <p>Note that the function takes 3 arguments:</p>
+
+    <ul>
+        <li>The item value</li>
+        <li>The item index</li>
+        <li>The array itself</li>
+    </ul>
+
+    <h2>Array.findIndex()</h2>
+
+    <p>The findIndex() method returns the index of the first array element that passes a test function.</p>
+
+    <p>This example finds the index of the first element that is larger than 18:</p>
+
+    <p id="demo12"></p>
+
+    <script>
+        var numbers = [4, 9, 16, 25, 29];
+        var first = numbers.findIndex(myFunction);
+
+        document.getElementById("demo12").innerHTML = "First number over 18 has index " + first;
+
+        function myFunction(value, index, array) {
+        return value > 18;
+        }
+    </script>
+    
+</body>
+</html>

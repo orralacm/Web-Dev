@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table, th, td {
+            width: auto;
+            border-collapse: collapse;
+            border: 2px solid black;
+        }
+        th {
+            background-color: mediumseagreen;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        th, td {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>JavaScript Get Date Methods</h1>
+
+    <p>These methods can be used for getting information from a date object:</p>
+
+    <table>
+        <tr>
+            <th>Method</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>getFullYear()</td>
+            <td>Get the year as a four digit number (yyyy)</td>
+        </tr>
+        <tr>
+            <td>getMonth()</td>
+            <td>Get the month as a number (0-11)</td>
+        </tr>
+        <tr>
+            <td>getDate()</td>
+            <td>Get the day as a number (1-31)</td>
+        </tr>
+        <tr>
+            <td>getHours()</td>
+            <td>Get the hour (0-23)</td>
+        </tr>
+        <tr>
+            <td>getMinutes()</td>
+            <td>Get the minute (0-59)</td>
+        </tr>
+        <tr>
+            <td>getSeconds()</td>
+            <td>Get the second (0-59)</td>
+        </tr>
+        <tr>
+            <td>getMilliseconds()</td>
+            <td>Get the millisecond (0-999)</td>
+        </tr>
+        <tr>
+            <td>getTime()</td>
+            <td>Get the time (milliseconds since January 1, 1970)</td>
+        </tr>
+        <tr>
+            <td>getDay()</td>
+            <td>Get the weekday as a number (0-6)</td>
+        </tr>
+        <tr>
+            <td>Date.now()</td>
+            <td>Get the time. ECMAScript 5.</td>
+    </table>
+
+    <h2>The getTime() Method</h2>
+
+    <p>The internal clock in JavaScript counts from midnight January 1, 1970.</p>
+    <p>The getTime() function returns the number of milliseconds since then:</p>
+
+    <p id="demo"></p>
+
+    <script>
+        var d = new Date();
+        document.getElementById("demo").innerHTML = d.getTime();
+    </script>
+
+    <h2>The getFullYear() Method</h2>
+
+    <p>The getFullYear() method returns the year of a date as a four digit number:</p>
+
+    <p id="demo2"></p>
+
+    <script>
+        var d = new Date();
+        document.getElementById("demo2").innerHTML = d.getFullYear();
+    </script>
+
+    <h2>The getMonth() Method</h2>
+
+    <p>The getMonth() method returns the month of a date as a number from 0 to 11.</p>
+    <p>To get the correct month, you must add 1:</p>
+
+    <p id="demo3"></p>
+
+    <script>
+        var d = new Date();
+        document.getElementById("demo3").innerHTML = d.getMonth() + 1;
+    </script>
+
+    <p style="background-color: yellow; width: 500px;">In JavaScript, the first month (January) is month number 0, so December returns month number 11.</p>
+
+    <p>You can use an array of names, and getMonth() to return the month as a name:</p>
+
+    <p id="demo4"></p>
+
+    <script>
+        var d = new Date();
+        var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+        document.getElementById("demo4").innerHTML = months[d.getMonth()];
+    </script>
+
+    <h2>The getDate() Method</h2>
+
+    <p>The getDate() method returns the day of a date as a number (1-31):</p>
+
+    <p id="demo5"></p>
+
+    <script>
+        var d = new Date();
+        document.getElementById("demo5").innerHTML = d.getDate();
+    </script>
+
+    <h2>The getHours() Method</h2>
+
+    <p>The getHours() method returns the hours of a date as a number (0-23):</p>
+
+    <p id="demo6"></p>
+
+    <script>
+        var d = new Date();
+        document.getElementById("demo6").innerHTML = d.getHours();
+    </script>
+
+    <h2>The getMinutes() Method</h2>
+
+    <p>The getMinutes() method returns the minutes of a date as a number (0-59):</p>
+
+    <p id="demo7"></p>
+
+    <script>
+        var d = new Date();
+        document.getElementById("demo7").innerHTML = d.getMinutes();
+    </script>
+
+    <h2>The getSeconds() Method</h2>
+
+    <p>The getSeconds() method returns the seconds of a date as a number (0-59):</p>
+
+    <p id="demo8"></p>
+
+    <script>
+        var d = new Date();
+        document.getElementById("demo8").innerHTML = d.getSeconds();
+    </script>
+
+    <h2>The getMilliseconds() Method</h2>
+
+    <p>The getMilliseconds() method returns the milliseconds of a date as a number (0-999):</p>
+
+    <p id="demo9"></p>
+
+    <script>
+        var d = new Date();
+        document.getElementById("demo9").innerHTML = d.getMilliseconds();
+    </script>
+
+    <h2>The getDay() Method</h2>
+
+    <p>The getDay() method returns the weekday of a date as a number (0-6):</p>
+
+    <p id="demo10"></p>
+
+    <script>
+        var d = new Date();
+        document.getElementById("demo10").innerHTML = d.getDay();
+    </script>
+
+    <p style="background-color: yellow; width: 500px;">In JavaScript, the first day of the week (0) means "Sunday", even if some countries in the world consider the first day of the week to be "Monday"</p>
+
+    <p>You can use an array of names, and getDay() to return the weekday as a name:</p>
+
+    <p id="demo"></p>
+
+    <script>
+        var d = new Date();
+        var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+        document.getElementById("demo").innerHTML = days[d.getDay()];
+    </script>
+
+    <h2>UTC Date Methods</h2>
+
+    <p>UTC date methods are used for working with UTC dates (Universal Time Zone dates):</p>
+
+    <table>
+        <tr>
+            <th>Method</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>getUTCDate()</td>
+            <td>Same as getDate(), but returns the UTC date</td>
+        </tr>
+        <tr>
+            <td>getUTCDay()</td>
+            <td>Same as getDay(), but returns the UTC day</td>
+        </tr>
+        <tr>
+            <td>getUTCFullYear()</td>
+            <td>Same as getFullYear(), but returns the UTC year</td>
+        </tr>
+        <tr>
+            <td>getUTCHours()</td>
+            <td>Same as getHours(), but returns the UTC hour</td>
+        </tr>
+        <tr>
+            <td>getUTCMilliseconds()</td>
+            <td>Same as getMilliseconds(), but returns the UTC milliseconds</td>
+        </tr>
+        <tr>
+            <td>getUTCMinutes()</td>
+            <td>Same as getMinutes(), but returns the UTC minutes</td>
+        </tr>
+        <tr>
+            <td>getUTCMonth()</td>
+            <td>Same as getMonth(), but returns the UTC month</td>
+        </tr>
+        <tr>
+            <td>getUTCSeconds()</td>
+            <td>Same as getSeconds(), but returns the UTC seconds</td>
+        </tr>
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h1>JavaScript Date Objects</h1>
+
+    <p>JavaScript Date Object lets us work with dates.</p>
+
+    <h2>Creating Date Objects</h2>
+
+    <p>There are 4 ways to create a new date object:</p>
+
+    <h2>new Date()</h2>
+
+    <p>new Date() creates a new date object with the current date and time:</p>
+
+    <p id="demo"></p>
+
+    <script>
+        var d = new Date();
+        document.getElementById("demo").innerHTML = d;
+    </script>
+
+    <p style="background-color: yellow; width: 500px;">Date objects are static. The computer time is ticking, but date objects are not.</p>
+
+    <h2>new Date(year, month, ...)</h2>
+
+    <p>new Date(year, month, ...) creates a new date object with a specified date and time.</p>
+
+    <p>7 numbers specify year, month, day, hour, minute, second, and millisecond (in that order):</p>
+    
+    <p id="demo2"></p>
+
+    <script>
+        var d = new Date(2018, 11, 24, 10, 33, 30, 0);
+        document.getElementById("demo2").innerHTML = d;
+    </script>
+
+    <p style="background-color: yellow; width: 500px;">Note: JavaScript counts months from 0 to 11.<br>
+    January is 0. December is 11.</p>
+
+    <p>2 numbers specify year and month:</p>
+
+    <p id="demo3"></p>
+
+    <script>
+        var d = new Date(2018, 11);
+        document.getElementById("demo3").innerHTML = d;
+    </script>
+
+    <p style="background-color: yellow; width: 500px;">You cannot omit month. If you supply only one parameter it will be treated as milliseconds.</p>
+
+    <h2>Previous Century</h2>
+
+    <p>One and two digit years will be interpreted as 19xx:</p>
+
+    <p id="demo4"></p>
+
+    <script>
+        var d = new Date(99, 11, 24);
+        document.getElementById("demo4").innerHTML = d;
+    </script>
+
+    <h2>new Date(dateString)</h2>
+
+    <p>new Date(dateString) creates a new date object from a date string:</p>
+
+    <p id="demo5"></p>
+
+    <script>
+        var d = new Date("October 13, 2014 11:13:00");
+        document.getElementById("demo5").innerHTML = d;
+    </script>
+
+    <h2>JavaScript Stores Dates as Milliseconds</h2>
+
+    <p>JavaScript stores dates as number of milliseconds since January 01, 1970, 00:00:00 UTC (Universal Time Coordinated).</p>
+
+    <p style="background-color: yellow; width: 500px;">Zero time is January 01, 1970 00:00:00 UTC.</p>
+
+    <p id="demo6"></p>
+
+    <script>
+        var d = new Date(0);
+        document.getElementById("demo6").innerHTML = d;
+    </script>
+
+    <p>01 January 1970 plus 100 000 000 000 milliseconds is approximately 03 March 1973:</p>
+
+    <p id="demo7"></p>
+
+    <script>
+        var d = new Date(100000000000);
+        document.getElementById("demo7").innerHTML = d;
+    </script>
+
+    <p>January 01 1970 minus 100 000 000 000 milliseconds is approximately October 31 1966:</p>
+
+    <p id="demo8"></p>
+
+    <script>
+        var d = new Date(-100000000000);
+        document.getElementById("demo8").innerHTML = d;
+    </script>
+
+    <p style="background-color: yellow; width: 500px;">One day (24 hours) is 86 400 000 milliseconds.</p>
+
+    <h2>Date Methods</h2>
+
+    <p>When a Date object is created, a number of methods allow you to operate on it.</p>
+
+    <h2>Displaying Dates</h2>
+
+    <p>JavaScript will (by default) output dates in full text string format:</p>
+
+    <p>When you display a date object in HTML, it is automatically converted to a string, with the toString() method.</p>
+
+    <p><p>The toString() method converts a date to a string:</p></p>
+
+    <p id="demo9"></p>
+
+    <script>
+    var d = new Date();
+    document.getElementById("demo9").innerHTML = d.toString();
+    </script>
+
+    <p>The toUTCString() method converts a date to a UTC string (a date display standard).</p>
+
+    <p id="demo10"></p>
+
+    <script>
+        var d = new Date();
+        document.getElementById("demo10").innerHTML = d.toUTCString();
+    </script>
+
+    <p>The toDateString() method converts a date to a more readable format:</p>
+
+    <p id="demo11"></p>
+
+    <script>
+        var d = new Date();
+        document.getElementById("demo11").innerHTML = d.toDateString();
+    </script>
+
+    <p>The toISOString() method converts a date to a string, using the ISO standard format:</p>
+
+    <p id="demo12"></p>
+
+    <script>
+        var d = new Date();
+        document.getElementById("demo12").innerHTML = d.toISOString();
+    </script>
+
+</body>
+</html>
