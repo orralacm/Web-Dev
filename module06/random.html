@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h1>JavaScript Random</h1>
+
+    <h2>JavaScript Math.random()</h2>
+
+    <p>Math.random() returns a random number between 0 (included) and 1 (excluded):</p>
+
+    <p id="demo"></p>
+
+    <script>
+        document.getElementById("demo").innerHTML = Math.random();
+    </script>
+
+    <p style="background-color: yellow; width: 500px;">Math.random() always returns a number lower than 1.</p>
+
+    <h2>JavaScript Random Integers</h2>
+
+    <p>Math.random() used with Math.floor() can be used to return random integers.</p>
+
+    <p>Math.floor(Math.random() * 10) returns a random integer between 0 and 9 (both included):</p>
+        
+    <p id="demo2"></p>
+    
+    <script>
+        document.getElementById("demo2").innerHTML =
+        Math.floor(Math.random() * 10);
+    </script>
+
+    <p>Math.floor(Math.random() * 11) returns a random integer between 0 and 10 (both included):</p>
+
+    <p id="demo3"></p>
+
+    <script>
+        document.getElementById("demo3").innerHTML =
+        Math.floor(Math.random() * 11);
+    </script>
+
+    <p>Math.floor(Math.random() * 100)) returns a random integer between 0 and 99 (both included):</p>
+    
+    <p id="demo4"></p>
+    
+    <script>
+        document.getElementById("demo4").innerHTML =
+        Math.floor(Math.random() * 100);
+    </script>
+
+    <p>Math.floor() used with Math.random() * 101 returns a random integer between 0 and 100 (both included):</p>
+    
+    <p id="demo5"></p>
+    
+    <script>
+        document.getElementById("demo5").innerHTML =
+        Math.floor(Math.random() * 101);
+    </script>
+
+    <p>Math.floor(Math.random() * 10) + 1) returns a random integer between 1 and 10 (both included):</p>
+    
+    <p id="demo6"></p>
+    
+    <script>
+        document.getElementById("demo6").innerHTML =
+        Math.floor(Math.random() * 10) + 1;
+    </script>
+
+    <p>Math.floor(Math.random() * 100) + 1) returns a random integer between 1 and 100 (both included):</p>
+    
+    <p id="demo7"></p>
+    
+    <script>
+        document.getElementById("demo7").innerHTML =
+        Math.floor(Math.random() * 100) + 1;
+    </script>
+
+    <h2>A Proper Random Function</h2>
+
+    <p>As you can see from the examples above, it might be a good idea to create a proper random function to use for all random integer purposes.<br>
+    This JavaScript function always returns a random number between min (included) and max (excluded):</p>
+
+    <p>Every time you click the button, getRndInteger(min, max) returns a random number between 0 and 9 (both included):</p>
+    
+    <button onclick="document.getElementById('demo8').innerHTML = getRndInteger(0,10)">Click Me</button>
+    
+    <p id="demo8"></p>
+    
+    <script>
+        function getRndInteger(min, max) {
+            return Math.floor(Math.random() * (max - min)) + min;
+        }
+    </script>
+
+    <p>Every time you click the button, getRndInteger(min, max) returns a random number between 1 and 10 (both included):</p>
+
+    <button onclick="document.getElementById('demo9').innerHTML = getRndInteger2(1,10)">Click Me</button>
+
+    <p id="demo9"></p>
+
+    <script>
+        function getRndInteger2(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) ) + min;
+        }
+    </script>
+
+</body>
+</html>
