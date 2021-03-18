@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .redli li {
+            width: min-content;
+            background-color: rgb(240, 235, 235);
+            color: rgb(206, 38, 72);
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 2px;
+            margin: 2px;
+        }
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>JavaScript Type Conversion</h1>
+
+    <p>Number() converts to a Number, String() converts to a String, Boolean() converts to a Boolean.</p>
+
+    <h2>JavaScript Data Types</h2>
+
+    <p>In JavaScript there are 5 different data types that can contain values:</p>
+
+    <ul class="redli">
+        <li>string</li>
+        <li>number</li>
+        <li>boolean</li>
+        <li>object</li>
+        <li>function</li>
+    </ul>
+
+    <p>There are 6 types of objects:</p>
+
+    <ul class="redli">
+        <li>Object</li>
+        <li>Date</li>
+        <li>Array</li>
+        <li>String</li>
+        <li>Number</li>
+        <li>Boolean</li>
+    </ul>
+
+        <p>And 2 data types that cannot contain values:</p>
+
+    <ul class="redli">
+        <li>null</li>
+        <li>undefined</li>
+    </ul>
+
+    <h2>The typeof Operator</h2>
+
+    <p>The typeof operator returns the type of a variable, object, function or expression.</p>
+
+    <p id="demo"></p>
+
+    <script>
+        document.getElementById("demo").innerHTML = 
+        typeof "john" + "<br>" +
+        typeof 3.14 + "<br>" +
+        typeof NaN + "<br>" +
+        typeof false + "<br>" +
+        typeof [1,2,3,4] + "<br>" +
+        typeof {name:'john', age:34} + "<br>" +
+        typeof new Date() + "<br>" +
+        typeof function () {} + "<br>" +
+        typeof myCar + "<br>" +
+        typeof null;
+    </script>
+
+    <p>Please observe:</p>
+
+    <ul>
+        <li>The data type of NaN is number</li>
+        <li>The data type of an array is object</li>
+        <li>The data type of a date is object</li>
+        <li>The data type of null is object</li>
+        <li>The data type of an undefined variable is undefined *</li>
+        <li>The data type of a variable that has not been assigned a value is also undefined *</li>
+    </ul>
+
+    <p style="background-color: yellow; width: 500px;">You cannot use typeof to determine if a JavaScript object is an array (or a date).</p>
+
+    <h2>The Data Type of typeof</h2>
+
+    <p>The typeofoperator is not a variable. It is an operator. Operators ( + - * / ) do not have any data type.</p>
+    <p>But, the typeof operator always returns a string (containing the type of the operand).</p>
+
+    <h2>The constructor Property</h2>
+
+    <p>The constructor property returns the constructor function for a variable or an object.</p>
+        
+    <p id="demo2"></p>
+    
+    <script>
+        document.getElementById("demo2").innerHTML = 
+            "john".constructor + "<br>" +
+            (3.14).constructor + "<br>" +
+            false.constructor + "<br>" +
+            [1,2,3,4].constructor + "<br>" +
+            {name:'john', age:34}.constructor + "<br>" +
+            new Date().constructor + "<br>" +
+            function () {}.constructor;
+    </script>
+
+    <p>You can check the constructor property to find out if an object is an Array (contains the word "Array"):</p>
+
+    <p>This "home made" isArray() function returns true when used on an array:</p>
+
+    <p id="demo3"></p>
+
+    <script>
+        var fruits = ["Banana", "Orange", "Apple", "Mango"];
+        document.getElementById("demo3").innerHTML = isArray(fruits);
+
+        function isArray(myArray) {
+        return myArray.constructor.toString().indexOf("Array") > -1;
+        }
+    </script>
+
+    <p>Or even simpler, you can check if the object is an Array function:</p>
+
+    <p id="demo4"></p>
+
+    <script>
+        var fruits = ["Banana", "Orange", "Apple", "Mango"];
+        document.getElementById("demo").innerHTML = isArray2(fruits);
+
+        function isArray2(myArray) {
+        return myArray.constructor === Array;
+        }
+    </script>
+
+    <p>You can check the constructor property to find out if an object is a Date (contains the word "Date"):</p>
+
+    <p id="demo5"></p>
+
+    <script>
+        var myDate = new Date();
+        document.getElementById("demo5").innerHTML = isDate(myDate);
+
+        function isDate(myDate) {
+        return myDate.constructor.toString().indexOf("Date") > -1;
+        }
+    </script>
+
+    <p>Or even simpler, you can check if the object is a Date function:</p>
+
+    <p id="demo6"></p>
+
+    <script>
+        var myDate = new Date();
+        document.getElementById("demo6").innerHTML = isDate2(myDate);
+
+        function isDate2(myDate) {
+        return myDate.constructor === Date;
+        }
+    </script>
+
+    <h2>JavaScript Type Conversion</h2>
+
+    <p>JavaScript variables can be converted to a new variable and another data type:</p>
+
+    <ul>
+        <li>By the use of a JavaScript function</li>
+        <li><strong>Automatically</strong> by JavaScript itself</li>
+    </ul>
+
+    <h2>Converting Numbers to Strings</h2>
+
+    <p>The global method String() can convert numbers to strings.</p>
+    <p>It can be used on any type of numbers, literals, variables, or expressions:</p>
+
+    <p id="demo7"></p>
+
+    <script>
+        var x = 123;
+        document.getElementById("demo7").innerHTML =
+        String(x) + "<br>" +
+        String(123) + "<br>" +
+        String(100 + 23);
+    </script>
+
+    <p>The Number method toString() does the same.</p>
+
+    <p id="demo8"></p>
+
+    <script>
+        var x1 = 123;
+        document.getElementById("demo8").innerHTML =
+        x1.toString() + "<br>" +
+        (123).toString() + "<br>" +
+        (100 + 23).toString();
+    </script>
+
+    <h2>Converting Booleans to Strings</h2>
+
+    <p>The global method String() can convert booleans to strings.</p>
+
+    <p style="font-family: courier;">String(false) // returns "false"<br>
+    String(true) // returns "true"</p>
+
+    <p>The Boolean method toString() does the same:</p>
+
+    <p style="font-family: courier;">false.toString() // returns "false"<br>
+    true.toString() // returns "true"</p>
+
+    <h2>Converting Dates to Strings</h2>
+
+    <p>The global method String() can convert dates to strings.</p>
+    <p>The Date method toString() does the same.</p>
+
+    <h2>The Unary + Operator</h2>
+
+    <p>The <strong>unary + operator</strong> can be used to convert a variable to a number:</p>
+
+    <button onclick="myFunction()">Try it</button>
+
+    <p id="demo9"></p>
+
+    <script>
+    function myFunction() {
+    var y2 = "5";
+    var x2 = + y2;
+    document.getElementById("demo9").innerHTML = typeof y2 + "<br>" + typeof x2;
+    }
+    </script>
+
+    <p>If the variable cannot be converted, it will still become a number, but with the value NaN (Not a Number):</p>
+
+    <button onclick="myFunction2()">Try it</button>
+
+    <p id="demo10"></p>
+
+    <script>
+        function myFunction2() {
+        var y3 = "John";
+        var x3 = + y3;
+        document.getElementById("demo10").innerHTML = typeof y3 + "<br>" + typeof x3;
+        }
+    </script>
+
+    <h2>Converting Booleans to Numbers</h2>
+
+    <p>The global method Number() can also convert booleans to numbers.</p>
+
+    <p style="font-family: courier;">Number(false) // returns 0<br>
+    Number(true) // returns 1</p>
+
+    <h2>Converting Dates to Numbers</h2>
+
+    <p>The global method Number() can be used to convert dates to numbers.</p>
+
+    <p style="font-family: courier;">d = new Date();<br>
+    Number(d) // returns 1404568027739</p>
+
+    <p>The date method getTime() does the same.</p>
+
+    <p style="font-family: courier;">d = new Date();<br>
+    d.getTime() // returns 1404568027739</p>
+
+    <h2>Automatic Type Conversion</h2>
+
+    <p>When JavaScript tries to operate on a "wrong" data type, it will try to convert the value to a "right" type.</p>
+
+    <p>The result is not always what you expect:</p>
+
+    <p id="demo11"></p>
+
+    <script>
+        var x4 = [];
+        document.getElementById("demo11").innerHTML =
+        (5 + null) + "<br>"  +
+        ("5" + null) + "<br>" +
+        ("5" + 2) + "<br>" +
+        ("5" - 2) + "<br>" +
+        ("5" * "2") + "<br>" +
+        ("5" / "2") + "<br>"
+    </script>
+
+    <h2>Automatic String Conversion</h2>
+
+    <p>JavaScript automatically calls the variable's toString() function when you try to "output" an object or a variable:</p>
+
+    <p style="font-family: courier;">document.getElementById("demo").innerHTML = myVar;<br>
+    // if myVar = {name:"Fjohn"}  // toString converts to "[object Object]"<br>
+    // if myVar = [1,2,3,4]       // toString converts to "1,2,3,4"<br>
+    // if myVar = new Date()      // toString converts to "Fri Jul 18 2014 09:08:55 GMT+0200"</p>
+
+    <p>Numbers and booleans are also converted, but this is not very visible:</p>
+
+    <p style="font-family: courier;">// if myVar = 123             // toString converts to "123"<br>
+    // if myVar = true            // toString converts to "true"<br>
+    // if myVar = false           // toString converts to "false"</p>
+
+    <h2>JavaScript Type Conversion Table</h2>
+
+    <p>This table shows the result of converting different JavaScript values to Number, String, and Boolean:</p>
+
+    <table>
+        <tr>
+            <th>Original Value</th>
+            <th>Converted to Number</th>
+            <th>Converted to String</th>
+            <th>Converted to Boolean</th>
+        </tr>
+        <tr>
+            <td>false</td>
+            <td>0</td>
+            <td>"false"</td>
+            <td>false</td>
+        </tr>
+        <tr>
+            <td>true</td>
+            <td>1</td>
+            <td>"true"</td>
+            <td>true</td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>"0"</td>
+            <td>false</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>"1"</td>
+            <td>true</td>
+        </tr>
+        <tr>
+            <td>"0</td>
+            <td>0</td>
+            <td>"0"</td>
+            <td style="color: red">true</td>
+        </tr>
+        <tr>
+            <td>"000"</td>
+            <td>0</td>
+            <td>"000"</td>
+            <td style="color: red">true</td>
+        </tr>
+        <tr>
+            <td>"1"</td>
+            <td>1</td>
+            <td>"1"</td>
+            <td>true</td>
+        </tr>
+        <tr>
+            <td>NaN</td>
+            <td>NaN</td>
+            <td>"NaN"</td>
+            <td>false</td>
+        </tr>
+        <tr>
+            <td>Infinity</td>
+            <td>Infinity</td>
+            <td>"Infinity"</td>
+            <td>true</td>
+        </tr>
+        <tr>
+            <td>-Infinity</td>
+            <td>-Infinity</td>
+            <td>"-Infinity"</td>
+            <td>true</td>
+        </tr>
+        <tr>
+            <td>""</td>
+            <td style="color: red">0</td>
+            <td>""</td>
+            <td style="color: red">false</td>
+        </tr>
+        <tr>
+            <td>"20"</td>
+            <td>20</td>
+            <td>"20"</td>
+            <td>true</td>
+        </tr>
+        <tr>
+            <td>"twenty"</td>
+            <td>NaN</td>
+            <td>"twenty"</td>
+            <td>true</td>
+        </tr>
+        <tr>
+            <td>[ ]</td>
+            <td style="color: red">0</td>
+            <td>""</td>
+            <td>true</td>
+        </tr>
+        <tr>
+            <td>[20]</td>
+            <td style="color: red">20</td>
+            <td>"20"</td>
+            <td>true</td>
+        </tr>
+        <tr>
+            <td>[10,20]</td>
+            <td>NaN</td>
+            <td>"10,20"</td>
+            <td>true</td>
+        </tr>
+        <tr>
+            <td>["twenty"]</td>
+            <td>NaN</td>
+            <td>"twenty"</td>
+            <td>true</td>
+        </tr>
+        <tr>
+            <td>["ten","twenty"]</td>
+            <td>NaN</td>
+            <td>"ten,twenty"</td>
+            <td>true</td>
+        </tr>
+        <tr>
+            <td>function(){}</td>
+            <td>NaN</td>
+            <td>"function(){}"</td>
+            <td>true</td>
+        </tr>
+        <tr>
+            <td>{ }</td>
+            <td>NaN</td>
+            <td>"[object Object]"</td>
+            <td>true</td>
+        </tr>
+        <tr>
+            <td>null</td>
+            <td style="color: red">0</td>
+            <td>"null"</td>
+            <td>false</td>
+        </tr>
+        <tr>
+            <td>undefined</td>
+            <td>NaN</td>
+            <td>"undefined"</td>
+            <td>false</td>
+        </tr>
+    </table>
+
+    <p>Values in quotes indicate string values.</p>
+
+    <p><span style="color:Red; font-weight: bold;">Red values</span> indicate values (some) programmers might not expect.</p>
+
+</body>
+</html>
