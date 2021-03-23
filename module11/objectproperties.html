@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h1>JavaScript Object Properties</h1>
+
+    <p>Properties are the most important part of any JavaScript object.</p>
+
+    <h2>JavaScript Properties</h2>
+
+    <p>Properties are the values associated with a JavaScript object.</p>
+    <p>A JavaScript object is a collection of unordered properties.</p>
+    <p>Properties can usually be changed, added, and deleted, but some are read only.</p>
+
+    <h2>Accessing JavaScript Properties</h2>
+
+    <p>The syntax for accessing the property of an object is:</p>
+    <p style="font-family: courier;">objectName.property         // person.age</p>
+    <p>or</p>
+    <p style="font-family: courier;">objectName["property"]      // person["age"]</p>
+    <p>or</p>
+    <p style="font-family: courier;">objectName[expression]      // x = "age"; person[x]</p>
+    <p style="background-color: yellow; width: 500px;">The expression must evaluate to a property name.</p>
+
+    <p>There are two different ways to access an object property:</p>
+    <p>You can use .property or ["property"].</p>
+
+    <p id="demo"></p>
+
+    <script>
+        var person = {
+        firstname:"John",
+        lastname:"Doe",
+        age:50,
+        eyecolor:"blue"
+        };
+
+        document.getElementById("demo").innerHTML = person.firstname + " is " + person.age + " years old.";
+    </script>
+
+    <p id="demo2"></p>
+
+    <script>
+        var person2 = {
+        firstname:"John",
+        lastname:"Doe",
+        age:50,
+        eyecolor:"blue"
+        };
+
+        document.getElementById("demo2").innerHTML = person2["firstname"] + " is " + person2["age"] + " years old.";
+    </script>
+
+    <h2>JavaScript for...in Loop</h2>
+
+    <p>The JavaScript for...in statement loops through the properties of an object.</p>
+
+    <h4>Syntax</h4>
+
+    <pre style="font-family: courier;">
+        for (variable in object) {
+          // code to be executed
+        }
+    </pre>
+
+    <p>The block of code inside of the for...in loop will be executed once for each property.</p>
+    <p>Looping through the properties of an object:</p>
+
+    <p id="demo3"></p>
+
+    <script>
+        var txt = "";
+        var person3 = {fname:"John", lname:"Doe", age:25}; 
+        var x;
+        for (x in person3) {
+        txt += person3[x] + " ";
+        }
+        document.getElementById("demo3").innerHTML = txt;
+    </script>
+
+    <h2>Adding New Properties</h2>
+
+    <p>You can add new properties to an existing object by simply giving it a value.</p>
+    <p>Assume that the person object already exists - you can then give it new properties:</p>
+
+    <p id="demo4"></p>
+
+    <script>
+        var person4 = {
+        firstname:"John",
+        lastname:"Doe",
+        age:50,
+        eyecolor:"blue"
+        };
+
+        person4.nationality = "English";
+        document.getElementById("demo4").innerHTML =
+        person4.firstname + " is " + person4.nationality + ".";
+    </script>
+
+    <h2>Deleting Properties</h2>
+
+    <p>The delete keyword deletes a property from an object:</p>
+
+    <p id="demo5"></p>
+
+    <script>
+        var person5 = {
+        firstname:"John",
+        lastname:"Doe",
+        age:50,
+        eyecolor:"blue"
+        };
+
+        delete person5.age;
+        document.getElementById("demo5").innerHTML =
+        person5.firstname + " is " + person5.age + " years old.";
+    </script>
+
+    <p>The delete keyword deletes both the value of the property and the property itself.</p>
+    <p>After deletion, the property cannot be used before it is added back again.</p>
+    <p>The delete operator is designed to be used on object properties. It has no effect on variables or functions.</p>
+    <p>The delete operator should not be used on predefined JavaScript object properties. It can crash your application.</p>
+
+    <h2>Property Attributes</h2>
+
+    <p>All properties have a name. In addition they also have a value.</p>
+    <p>The value is one of the property's attributes.</p>
+    <p>Other attributes are: enumerable, configurable, and writable.</p>
+    <p>These attributes define how the property can be accessed (is it readable?, is it writable?)</p>
+    <p>In JavaScript, all attributes can be read, but only the value attribute can be changed (and only if the property is writable).</p>
+    <p>( ECMAScript 5 has methods for both getting and setting all property attributes)</p>
+
+    <h2>Prototype Properties</h2>
+
+    <p>JavaScript objects inherit the properties of their prototype.</p>
+    <p>The delete keyword does not delete inherited properties, but if you delete a prototype property, it will affect all objects inherited from the prototype.</p>
+
+</body>
+</html>
