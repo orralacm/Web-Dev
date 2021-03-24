@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h1>JavaScript Object Methods</h1>
+
+    <h2>The this Keyword</h2>
+
+    <p>In a function definition, this refers to the "owner" of the function.</p>
+    
+    <p>In this example, <b>this</b> represents the <b>person</b> object.</p>
+    <p>Because the person object "owns" the fullName method.</p>
+    
+    <p id="demo"></p>
+    
+    <script>
+        // Create an object:
+        var person = {
+        firstName: "John",
+        lastName : "Doe",
+        id     : 5566,
+        fullName : function() {
+            return this.firstName + " " + this.lastName;
+        }
+        };
+        
+        // Display data from the object:
+        document.getElementById("demo").innerHTML = person.fullName();
+    </script></p>
+
+    <h2>JavaScript Methods</h2>
+
+    <p>JavaScript methods are actions that can be performed on objects.</p>
+    <p>A JavaScript <b>method</b> is a property containing a <b>function definition</b>.</p>
+    <p style="background-color: yellow; width: 500px;">Methods are functions stored as object properties.</p>
+    
+    <h2>Accessing Object Methods</h2>
+
+    <p>You access an object method with the following syntax:</p>
+    <p style="font-family: courier;">objectName.methodName()</p>
+
+    <p>You will typically describe fullName() as a method of the person object, and fullName as a property.</p>
+    <p>The fullName property will execute (as a function) when it is invoked with ().</p>
+    <p>The following example accesses the fullName() <b>method</b> of a person object:</p>
+
+    <p>A method is actually a function definition stored as a property value.</p>
+
+    <p id="demo2"></p>
+
+    <script>
+        var person2 = {
+        firstName: "John",
+        lastName : "Doe",
+        id     : 5566,
+        fullName : function() {
+            return this.firstName + " " + this.lastName;
+        }
+        };
+
+        document.getElementById("demo2").innerHTML = person2.fullName();
+    </script>
+
+    <p>If you access the fullName <b>property</b>, without (), it will return the <b>function definition</b>:</p>
+
+    <p id="demo3"></p>
+
+    <script>
+        var person3 = {
+        firstName: "John",
+        lastName : "Doe",
+        id     : 5566,
+        fullName : function() {
+            return this.firstName + " " + this.lastName;
+        }
+        };
+
+        document.getElementById("demo3").innerHTML = person3.fullName;
+    </script>
+
+    <h2>Using Built-In Methods</h2>
+
+    <p>This example uses the toUpperCase() method of the String object, to convert a text to uppercase:</p>
+    <pre style="font-family: courier;">
+      var message = "Hello world!";
+      var x = message.toUpperCase();
+    </pre>
+
+    <p>The value of x, after execution of the code above will be:</p>
+
+    <p style="font-family: courier;">HELLO WORLD!</p>
+
+    <h2>Adding a Method to an Object</h2>
+
+    <p>Adding a new method to an object is easy:</p>
+
+    <p id="demo4"></p>
+
+    <script>
+        var person4 = {
+        firstName: "John",
+        lastName : "Doe",
+        id     : 5566,
+        };
+        person4.name = function() {
+        return this.firstName + " " + this.lastName;
+        };
+
+        document.getElementById("demo4").innerHTML =
+        "My father is " + person4.name(); 
+    </script>
+
+
+
+
+
+
+
+</body>
+</html>

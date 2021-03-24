@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h1>JavaScript Object Constructors</h1>
+
+    <p id="demo"></p>
+
+    <script>
+        // Constructor function for Person objects
+        function Person(first, last, age, eye) {
+        this.firstName = first;
+        this.lastName = last;
+        this.age = age;
+        this.eyeColor = eye;
+        }
+
+        // Create a Person object
+        var myFather = new Person("John", "Doe", 50, "blue");
+
+        // Display age
+        document.getElementById("demo").innerHTML =
+        "My father is " + myFather.age + "."; 
+    </script>
+
+    <p style="background-color: yellow; width: 500px;">It is considered good practice to name constructor functions with an upper-case first letter.</p>
+
+    <h2>Object Types (Blueprints) (Classes)</h2>
+
+    <p>Sometimes we need a <b>"blueprint"</b> for creating many objects of the same "type".</p>
+    <p>The way to create an "object type", is to use an <b>object constructor function</b>.</p>
+    <p>In the example above, function Person() is an object constructor function.</p>
+    <p>Objects of the same type are created by calling the constructor function with the new keyword:</p>
+
+    <p id="demo2"></p>
+
+    <script>
+        // Constructor function for Person objects
+        function Person2(first, last, age, eye) {
+        this.firstName = first;
+        this.lastName = last;
+        this.age = age;
+        this.eyeColor = eye;
+        }
+
+        // Create two Person objects
+        var myFather2 = new Person2("John", "Doe", 50, "blue");
+        var myMother2 = new Person2("Sally", "Rally", 48, "green");
+
+        // Display age
+        document.getElementById("demo2").innerHTML =
+        "My father is " + myFather2.age + ". My mother is " + myMother2.age + "."; 
+    </script>
+
+    <h2>The this Keyword</h2>
+
+    <p>In JavaScript, the thing called this is the object that "owns" the code.</p>
+    <p>The value of this, when used in an object, is the object itself.</p>
+    <p>In a constructor function this does not have a value. It is a substitute for the new object. The value of this will become the new object when a new object is created.</p>
+    <p style="background-color: yellow; width: 500px;">Note that this is not a variable. It is a keyword. You cannot change the value of this.</p>
+
+    <h2>Adding a Property to an Object</h2>
+
+    <p>Adding a new property to an existing object is easy:</p>
+    <p style="font-family: courier;">myFather.nationality = "English";</p>
+    <p>The property will be added to myFather. Not to myMother. (Not to any other person objects).</p>
+
+    <h2>Adding a Method to an Object</h2>
+
+    <p>Adding a new method to an existing object is easy:</p>
+    <pre style="font-family: courier;">
+        myFather.name = function () {
+          return this.firstName + " " + this.lastName;
+        };
+    </pre>
+
+    <p>The method will be added to myFather. Not to myMother. (Not to any other person objects).</p>
+
+    <h2>Adding a Property to a Constructor</h2>
+
+    <p>You cannot add a new property to an object constructor the same way you add a new property to an existing object:</p>
+
+    <p style="font-family: courier;">Person.nationality = "English";</p>
+
+    <p>To add a new property to a constructor, you must add it to the constructor function:</p>
+
+    <p id="demo3"></p>
+
+    <script>
+        // Constructor function for Person objects
+        function Person3(first, last, age, eye) {
+        this.firstName = first;
+        this.lastName = last;
+        this.age = age;
+        this.eyeColor = eye;
+        this.nationality = "English";
+        }
+
+        // Create 2 Person objects
+        var myFather3 = new Person3("John", "Doe", 50, "blue");
+        var myMother3 = new Person3("Sally", "Rally", 48, "green");
+
+        // Display nationality
+        document.getElementById("demo3").innerHTML =
+        "My father is " + myFather3.nationality + ". My mother is " + myMother3.nationality; 
+    </script>
+
+    <p style="background-color: yellow; width: 500px;">This way object properties can have default values.</p>
+
+    <h2>Adding a Method to a Constructor</h2>
+
+    <p>Your constructor function can also define methods:</p>
+
+    <p id="demo4"></p>
+
+    <script>
+        // Constructor function for Person objects
+        function Person4(first, last, age, eye) {
+        this.firstName = first;
+        this.lastName = last;
+        this.age = age;
+        this.eyeColor = eye;
+        this.name = function() {
+            return this.firstName + " " + this.lastName
+        };
+        }
+
+        // Create a Person object
+        var myFather4 = new Person4("John", "Doe", 50, "blue");
+
+        // Display full name
+        document.getElementById("demo4").innerHTML =
+        "My father is " + myFather4.name(); 
+    </script>
+
+    <p>You cannot add a new method to an object constructor the same way you add a new method to an existing object.</p>
+    <p>Adding methods to an object constructor must be done inside the constructor function:</p>
+
+    <pre style="font-family: courier;">
+        function Person(firstName, lastName, age, eyeColor) {
+            this.firstName = firstName; 
+            this.lastName = lastName;
+            this.age = age;
+            this.eyeColor = eyeColor;
+            this.changeName = function (name) {
+              this.lastName = name;
+            };
+          }
+    </pre>
+
+    <p>The changeName() function assigns the value of name to the person's lastName property.</p>
+
+    <p id="demo5"></p>
+
+    <script>
+        // Constructor function for Person objects
+        function Person5(firstName,lastName,age,eyeColor) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.eyeColor = eyeColor;
+        this.changeName = function (name) {
+            this.lastName = name;
+        }
+        }
+        // Create a Person object
+        var myMother5 = new Person5("Sally","Rally",48,"green");
+
+        // Change last name
+        myMother5.changeName("Doe");
+
+        // Display last name
+        document.getElementById("demo5").innerHTML =
+        "My mother's last name is " + myMother5.lastName;
+    </script>
+
+    <h2>Built-in JavaScript Constructors</h2>
+
+    <p>JavaScript has built-in constructors for native objects:</p>
+
+    <pre style="font-weight: courier;">
+        var x1 = new Object();    // A new Object object
+        var x2 = new String();    // A new String object
+        var x3 = new Number();    // A new Number object
+        var x4 = new Boolean();   // A new Boolean object
+        var x5 = new Array();     // A new Array object
+        var x6 = new RegExp();    // A new RegExp object
+        var x7 = new Function();  // A new Function object
+        var x8 = new Date();      // A new Date object
+    </pre>
+
+    <p>The Math() object is not in the list. Math is a global object. The new keyword cannot be used on Math.</p>
+
+    <h2>Did You Know?</h2>
+
+    <p>As you can see above, JavaScript has object versions of the primitive data types String, Number, and Boolean. But there is no reason to create complex objects. Primitive values are much faster.</p>
+
+    <p>Use object literals {} instead of new Object().</p>
+    <p>Use string literals "" instead of new String().</p>
+    <p>Use number literals 12345 instead of new Number().</p>
+    <p>Use boolean literals true / false instead of new Boolean().</p>
+    <p>Use array literals [] instead of new Array().</p>
+    <p>Use pattern literals /()/ instead of new RegExp().</p>
+    <p>Use function expressions () {} instead of new Function().</p>
+
+</body>
+</html>

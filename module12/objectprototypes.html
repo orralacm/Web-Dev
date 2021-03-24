@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h1>JavaScript Object Prototypes</h1>
+
+    <h2>Prototype Inheritance</h2>
+
+    <p>All JavaScript objects inherit properties and methods from a prototype:</p>
+
+    <ul>
+        <li>Date objects inherit from Date.prototype</li>
+        <li>Array objects inherit from Array.prototype</li>
+        <li>Person objects inherit from Person.prototype</li>
+    </ul>
+
+    <p>The Object.prototype is on the top of the prototype inheritance chain:</p>
+    <p>Date objects, Array objects, and Person objects inherit from Object.prototype.</p>
+
+    <h2>Adding Properties and Methods to Objects</h2>
+
+    <p>Sometimes you want to add new properties (or methods) to all existing objects of a given type.</p>
+    <p>Sometimes you want to add new properties (or methods) to an object constructor.</p>
+
+    <h2>Using the prototype Property</h2>
+
+    <p>The JavaScript prototype property allows you to add new properties to object constructors:</p>
+
+    <p id="demo"></p>
+
+    <script>
+        function Person(first, last, age, eye) {
+        this.firstName = first;
+        this.lastName = last;
+        this.age = age;
+        this.eyeColor = eye;
+        }
+
+        Person.prototype.nationality = "English";
+
+        var myFather = new Person("John", "Doe", 50, "blue");
+        document.getElementById("demo").innerHTML =
+        "The nationality of my father is " + myFather.nationality; 
+    </script>
+
+    <p>The JavaScript prototype property also allows you to add new methods to objects constructors:</p>
+
+    <p id="demo2"></p>
+
+    <script>
+        function Person2(first, last, age, eye) {
+        this.firstName = first;
+        this.lastName = last;
+        this.age = age;
+        this.eyeColor = eye;
+        }
+
+        Person2.prototype.name = function() {
+        return this.firstName + " " + this.lastName
+        };
+
+        var myFather2 = new Person2("John", "Doe", 50, "blue");
+        document.getElementById("demo2").innerHTML =
+        "My father is " + myFather2.name(); 
+    </script>
+
+    <p style="background-color: pink; width: 500px;">Only modify your own prototypes. Never modify the prototypes of standard JavaScript objects.</p>
+
+</body>
+</html>

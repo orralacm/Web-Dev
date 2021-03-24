@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h1>JavaScript Object Accessors</h1>
+
+    <h2>JavaScript Accessors (Getters and Setters)</h2>
+
+    <p>ECMAScript 5 (2009) introduced Getter and Setters.</p>
+    <p>Getters and setters allow you to define Object Accessors (Computed Properties).</p>
+
+    <h2>JavaScript Getter (The get Keyword)</h2>
+
+    <p>This example uses a lang property to get the value of the language property.</p>
+
+    <p id="demo"></p>
+
+    <script>
+        // Create an object:
+        var person = {
+        firstName: "John",
+        lastName : "Doe",
+        language : "en",
+        get lang() {
+            return this.language;
+        }
+        };
+        // Display data from the object using a getter:
+        document.getElementById("demo").innerHTML = person.lang;
+    </script>
+
+    <h2>JavaScript Setter (The set Keyword)</h2>
+
+    <p>This example uses a lang property to set the value of the language property.</p>
+
+    <p id="demo2"></p>
+
+    <script>
+        // Create an object:
+        var person2 = {
+        firstName: "John",
+        lastName : "Doe",
+        language : "NO",
+        set lang(value) {
+            this.language = value;
+        }
+        };
+        // Set a property using set:
+        person2.lang = "en";
+        // Display data from the object:
+        document.getElementById("demo2").innerHTML = person2.language;
+    </script>
+
+    <h2>JavaScript Function or Getter?</h2>
+
+    <h4>Example 1</h4>
+
+    <p id="demo3"></p>
+
+    <script>
+        // Create an object:
+        var person3 = {
+        firstName: "John",
+        lastName : "Doe",
+        fullName : function() {
+            return this.firstName + " " + this.lastName;
+        }
+        };
+        // Display data from the object using a method:
+        document.getElementById("demo3").innerHTML = person3.fullName();
+    </script>
+
+    <h4>Example 2</h4>
+
+    <p id="demo4"></p>
+
+    <script>
+        // Create an object:
+        var person4 = {
+        firstName: "John",
+        lastName : "Doe",
+        get fullName() {
+            return this.firstName + " " + this.lastName;
+        }
+        };
+        // Display data from the object using a getter:
+        document.getElementById("demo4").innerHTML = person4.fullName;
+    </script>
+
+    <p>Note:</p>
+    <p>Example 1 access fullName as a function: person.fullName().</p>
+    <p>Example 2 access fullName as a property: person.fullName.</p>
+    <p style="background-color: yellow; width: 500px;">The second example provides simpler syntax.</p>
+
+    <h2>Data Quality</h2>
+
+    <p>JavaScript can secure better data quality when using getters and setters.</p>
+    <p>Using the lang property, in this example, returns the value of the language property in upper case:</p>
+
+    <p id="demo5"></p>
+
+    <script>
+        // Create an object:
+        var person5 = {
+        firstName: "John",
+        lastName : "Doe",
+        language : "en",
+        get lang() {
+            return this.language.toUpperCase();
+        }
+        };
+        // Display data from the object using a getter:
+        document.getElementById("demo5").innerHTML = person5.lang;
+    </script>
+
+    <p>Using the lang property, in this example, stores an upper case value in the language property:</p>
+
+    <p id="demo6"></p>
+
+    <script>
+        // Create an object:
+        var person6 = {
+        firstName: "John",
+        lastName : "Doe",
+        language : "",
+        set lang(lang) {
+            this.language = lang.toUpperCase();
+        }
+        };
+        // Set a property using set:
+        person6.lang = "en";
+        // Display data from the object:
+        document.getElementById("demo6").innerHTML = person6.language;
+    </script>
+
+    <h2>Why Using Getters and Setters?</h2>
+    
+    <ul>
+        <li>It gives simpler syntax</li>
+        <li>It allows equal syntax for properties and methods</li>
+        <li>It can secure better data quality</li>
+        <li>It is useful for doing things behind-the-scenes</li>
+    </ul>
+
+    <h2>Object.defineProperty()</h2>
+
+    <p>The Object.defineProperty() method can also be used to add Getters and Setters:</p>
+
+    <p id="demo7"></p>
+
+    <script>
+        // Define an object
+        var obj = {counter : 0};
+
+        // Define Setters and Getters
+        Object.defineProperty(obj, "reset", {
+        get : function () {this.counter = 0;}
+        });
+        Object.defineProperty(obj, "increment", {
+        get : function () {this.counter++;}
+        });
+        Object.defineProperty(obj, "decrement", {
+        get : function () {this.counter--;}
+        });
+        Object.defineProperty(obj, "add", {
+        set : function (value) {this.counter += value;}
+        });
+        Object.defineProperty(obj, "subtract", {
+        set : function (value) {this.counter -= value;}
+        });
+
+        // Play with counter:
+        obj.reset;
+        obj.add = 5;
+        obj.subtract = 1;
+        obj.increment;
+        obj.decrement;
+        document.getElementById("demo7").innerHTML = obj.counter;
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
