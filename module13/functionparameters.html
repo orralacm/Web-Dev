@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h1>JavaScript Function Parameters</h1>
+
+    <p>A JavaScript function does not perform any checking on parameter values (arguments).</p>
+
+    <h2>Function Parameters and Arguments</h2>
+
+    <p>You learned that functions can have <b>parameters</b>:</p>
+
+    <pre style="font-family: courier;">
+        function functionName(parameter1, parameter2, parameter3) {
+          // code to be executed
+        }
+    </pre>
+
+    <p>Function <b>parameters</b> are the <b>names</b> listed in the function definition.</p>
+    <p>Function <b>arguments</b> are the real <b>values</b> passed to (and received by) the function.</p>
+
+    <h2>Parameter Rules</h2>
+
+    <p>JavaScript function definitions do not specify data types for parameters.</p>
+    <p>JavaScript functions do not perform type checking on the passed arguments.</p>
+    <p>JavaScript functions do not check the number of arguments received.</p>
+
+    <h2>Default Parameters</h2>
+
+    <p>If a function is called with missing arguments (less than declared), the missing values are set to undefined.</p>
+    <p>Sometimes this is acceptable, but sometimes it is better to assign a default value to the parameter:</p>
+
+    <p id="demo"></p>
+
+    <script>
+        function myFunction(x, y) {
+        if (y === undefined) {
+            y = 2;
+        }  
+        return x * y;
+        }
+        document.getElementById("demo").innerHTML = myFunction(4);
+    </script>
+
+    <p>ECMAScript 2015 allows default parameter values in the function declaration:</p>
+
+    <p>Setting a default value to a function parameter (y=2).</p>
+    <p id="demo2"></p>
+
+    <script>
+        function myFunction2(x, y = 2) {
+        return x * y;
+        }
+        document.getElementById("demo2").innerHTML = myFunction2(4);
+    </script>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+
