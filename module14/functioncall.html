@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h1>JavaScript Function Call</h1>
+
+    <h2>Method Reuse</h2>
+
+    <p>With the call() method, you can write a method that can be used on different objects.</p>
+
+    <h2>All Functions are Methods</h2>
+
+    <p>In JavaScript all functions are object methods.</p>
+    <p>This example creates an object with 3 properties (firstName, lastName, fullName).</p>
+    <p>The fullName property is a method:</p> 
+
+    <p id="demo"></p>
+
+    <script>
+        var myObject = {
+        firstName:"John",
+        lastName: "Doe",
+        fullName: function() {
+            return this.firstName + " " + this.lastName;
+        }
+        }
+        x = myObject.fullName();
+        document.getElementById("demo").innerHTML = x; 
+    </script>
+
+    <h2>The JavaScript call() Method</h2>
+
+    <p>The call() method is a predefined JavaScript method.</p>
+    <p>It can be used to invoke (call) a method with an owner object as an argument (parameter).</p>
+
+    <p style="background-color: yellow; width: 500px;">With call(), an object can use a method belonging to another object.</p>
+
+    <p>This example calls the fullName method of person, using it on person1:
+
+    <p id="demo2"></p>
+
+    <script>
+        var person2 = {
+        fullName: function() {
+            return this.firstName + " " + this.lastName;
+        }
+        }
+        var person2a = {
+        firstName:"John",
+        lastName: "Doe"
+        }
+        var person2b = {
+        firstName:"Mary",
+        lastName: "Doe"
+        }
+        var x = person2.fullName.call(person2a); 
+        document.getElementById("demo2").innerHTML = x; 
+    </script>
+
+    <p>This example calls the fullName method of person, using it on person2:</p>
+
+    <p id="demo3"></p>
+
+    <script>
+        var person = {
+        fullName: function() {
+            return this.firstName + " " + this.lastName;
+        }
+        }
+        var person3a = {
+        firstName:"John",
+        lastName: "Doe"
+        }
+        var person3b = {
+        firstName:"Mary",
+        lastName: "Doe"
+        }
+        x3 = person.fullName.call(person3b); 
+        document.getElementById("demo3").innerHTML = x3; 
+    </script>
+
+    <h2>The call() Method with Arguments</h2>
+
+    <p>The call() method can accept arguments:</p>
+
+    <p id="demo4"></p>
+
+    <script>
+        var person4 = {
+        fullName: function(city, country) {
+            return this.firstName + " " + this.lastName + "," + city + "," + country;
+        }
+        }
+        var person4a = {
+        firstName:"John",
+        lastName: "Doe"
+        }
+        var person4b = {
+        firstName:"Mary",
+        lastName: "Doe"
+        }
+        var x4 = person4.fullName.call(person4a, "Oslo", "Norway"); 
+        document.getElementById("demo4").innerHTML = x4; 
+    </script>
+
+
+</body>
+</html>

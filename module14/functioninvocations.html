@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h1>JavaScript Function Invocation</h1>
+
+    <p>The code inside a JavaScript function will execute when "something" invokes it.</p>
+
+    <h2>Invoking a JavaScript Function</h2>
+
+    <p>The code inside a function is not executed when the function is <b>defined</b>.</p>
+    <p>The code inside a function is executed when the function is <b>invoked</b>.</p>
+    <p>It is common to use the term "call a function" instead of <b>"invoke a function"</b>.</p>
+    <p>It is also common to say "call upon a function", "start a function", or "execute a function".</p>
+    <p>In this tutorial, we will use <b>invoke</b>, because a JavaScript function can be invoked without being called.</p>
+
+    <h2>Invoking a Function as a Function</h2>
+
+    <p>The global function (myFunction) returns the product of the arguments (a ,b):</p>
+
+    <p id="demo"></p>
+
+    <script>
+        function myFunction(a, b) {
+        return a * b;
+        }
+        document.getElementById("demo").innerHTML = myFunction(10, 2); 
+    </script>
+
+    <p>The function above does not belong to any object. But in JavaScript there is always a default global object.</p>
+    <p>In HTML the default global object is the HTML page itself, so the function above "belongs" to the HTML page.</p>
+    <p>In a browser the page object is the browser window. The function above automatically becomes a window function.</p>
+    <p>myFunction() and window.myFunction() is the same function:</p>
+
+    <p id="demo2"></p>
+
+    <script>
+        function myFunction2(a, b) {
+        return a * b;
+        }
+        document.getElementById("demo2").innerHTML = window.myFunction2(10, 2); 
+    </script>
+
+    <p style="background-color: yellow; width: 500px;">This is a common way to invoke a JavaScript function, but not a very good practice.<br>
+    Global variables, methods, or functions can easily create name conflicts and bugs in the global object.</p>
+
+    <h2>The this Keyword</h2>
+
+    <p>In JavaScript, the thing called this, is the object that "owns" the current code.</p>
+    <p>The value of this, when used in a function, is the object that "owns" the function.</p>
+
+    <h2>The Global Object</h2>
+
+    <p>When a function is called without an owner object, the value of this becomes the global object.</p>
+    <p>In a web browser the global object is the browser window.</p>
+    <p>This example returns the window object as the value of this:</p>
+
+    <p id="demo3"></p>
+
+    <script>
+        var x3 = myFunction();
+        function myFunction() {
+        return this;
+        }
+        document.getElementById("demo3").innerHTML = x3; 
+    </script>
+
+    <p style="background-color: yellow; width: 500px;">Invoking a function as a global function, causes the value of this to be the global object.<br>
+    Using the window object as a variable can easily crash your program.</p>
+
+    <h2>Invoking a Function as a Method</h2>
+
+    <p>In JavaScript you can define functions as object methods.</p>
+    <p>The following example creates an object (myObject), with two properties (firstName and lastName), and a method (fullName):</p>
+
+    <p id="demo4"></p>
+
+    <script>
+        var myObject4 = {
+        firstName:"John",
+        lastName: "Doe",
+        fullName: function() {
+            return this.firstName + " " + this.lastName;
+        }
+        }
+        document.getElementById("demo4").innerHTML = myObject4.fullName(); 
+    </script>
+
+    <p>The <b>fullName</b> method is a function. The function belongs to the object. <b>myObject</b> is the owner of the function.</p>
+    <p>The thing called this, is the object that "owns" the JavaScript code. In this case the value of this is <b>myObject</b>.</p>
+    <p>Test it! Change the fullName method to return the value of this:</p>
+
+    <p id="demo5"></p>
+
+    <script>
+        var myObject5 = {
+        firstName:"John",
+        lastName: "Doe",
+        fullName: function() {
+            return this;
+        }
+        }
+        document.getElementById("demo5").innerHTML = myObject5.fullName();
+    </script>
+
+    <p style="background-color: yellow; width: 500px;">Invoking a function as an object method, causes the value of this to be the object itself.</p>
+
+    <h2>Invoking a Function with a Function Constructor</h2>
+
+    <p>If a function invocation is preceded with the new keyword, it is a constructor invocation.</p>
+    <p>It looks like you create a new function, but since JavaScript functions are objects you actually create a new object:</p>
+
+    <p id="demo6"></p>
+
+    <script>
+        function myFunction(arg1, arg2) {
+        this.firstName = arg1;
+        this.lastName  = arg2;
+        }
+
+        var x6 = new myFunction("John","Doe")
+        document.getElementById("demo6").innerHTML = x6.firstName; 
+    </script>
+
+    <p>A constructor invocation creates a new object. The new object inherits the properties and methods from its constructor.</p>
+
+    <p style="background-color: yellow; width: 500px;">The this keyword in the constructor does not have a value.<br>
+    The value of this will be the new object created when the function is invoked.</p>
+
+</body>
+</html>
