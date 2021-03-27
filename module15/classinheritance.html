@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h1>JavaScript Class Inheritance</h1>
+
+    <h2>Class Inheritance</h2>
+
+    <p>A class created with a class inheritance inherits all the methods from another class:</p>
+
+    <p>Use the "extends" keyword to inherit all methods from another class.</p>
+    <p>Use the "super" method to call the parent's constructor function.</p>
+
+    <p id="demo"></p>
+
+    <script>
+        class Car {
+        constructor(brand) {
+            this.carname = brand;
+        }
+        present() {
+            return 'I have a ' + this.carname;
+        }
+        }
+
+        class Model extends Car {
+        constructor(brand, mod) {
+            super(brand);
+            this.model = mod;
+        }
+        show() {
+            return this.present() + ', it is a ' + this.model;
+        }
+        }
+
+        let myCar = new Model("Ford", "Mustang");
+        document.getElementById("demo").innerHTML = myCar.show();
+    </script>
+
+    <p>The super() method refers to the parent class.</p>
+    <p>By calling the super() method in the constructor method, we call the parent's constructor method and gets access to the parent's properties and methods.</p>
+
+    <p style="background-color: yellow; width: 500px;">Inheritance is useful for code reusability: reuse properties and methods of an existing class when you create a new class.</p>
+
+    <h2>Getters and Setters</h2>
+
+    <p>Classes also allows you to use getters and setters.</p>
+    <p>It can be smart to use getters and setters for your properties, especially if you want to do something special with the value before returning them, or before you set them.</p>
+    <p>To add getters and setters in the class, use the get and set keywords.</p>
+
+    <p id="demo2"></p>
+
+    <script>
+        class Car2 {
+        constructor(brand) {
+            this.carname = brand;
+        }
+        get cnam() {
+            return this.carname;
+        }
+        set cnam(x) {
+            this.carname = x;
+        }
+        }
+
+        let myCar2 = new Car2("Ford");
+
+        document.getElementById("demo2").innerHTML = myCar2.cnam;
+    </script>
+
+    <p style="background-color: yellow; width: 500px;">Note: even if the getter is a method, you do not use parentheses when you want to get the property value.</p>
+
+    <p>The name of the getter/setter method cannot be the same as the name of the property, in this case carname.</p>
+    <p>Many programmers use an underscore character _ before the property name to separate the getter/setter from the actual property:</p>
+
+    <p id="demo3"></p>
+
+    <script>
+        class Car3 {
+        constructor(brand) {
+            this._carname = brand;
+        }
+        get carname() {
+            return this._carname;
+        }
+        set carname(x) {
+            this._carname = x;
+        }
+        }
+
+        let myCar3 = new Car3("Ford");
+
+        document.getElementById("demo3").innerHTML = myCar3.carname;
+    </script>
+
+    <p>To use a setter, use the same syntax as when you set a property value, without parentheses:</p>
+
+    <p id="demo4"></p>
+
+    <script>
+        class Car4 {
+        constructor(brand) {
+            this._carname = brand;
+        }
+        set carname(x) {
+            this._carname = x;
+        }
+        get carname() {
+            return this._carname;
+        }
+        }
+
+        let myCar4 = new Car4("Ford");
+        myCar4.carname = "Volvo";
+        document.getElementById("demo4").innerHTML = myCar4.carname;
+    </script>
+
+    <h2>Hoisting</h2>
+
+    <p>Unlike functions, and other JavaScript declarations, class declarations are not hoisted.</p>
+    <p>That means that you must declare a class before you can use it:</p>
+
+    <p id="demo5"></p>
+
+    <script>
+        //You cannot use the class yet.
+        //myCar = new Car("Ford")
+        //This would raise an error.
+
+        class Car5 {
+        constructor(brand) {
+            this.carname = brand;
+        }
+        }
+
+        //Now you can use the class:
+        let myCar = new Car5("Ford")
+    </script>
+
+<p style="background-color: yellow; width: 500px;">Note: For other declarations, like functions, you will NOT get an error when you try to use it before it is declared, because the default behavior of JavaScript declarations are hoisting (moving the declaration to the top).</p>
+
+</body>
+</html>
