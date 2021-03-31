@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h1>JavaScript Async</h1>
+
+    <p style="background-color: lightseagreen; width: 500px;">"async and await make promises easier to write"<br>
+    <b>async</b> makes a function return a Promise<br>
+    <b>await</b> makes a function wait for a Promise</p>
+
+    <h2>Async Syntax</h2>
+
+    <p>The keyword async before a function makes the function return a promise:</p>
+
+    <pre>
+        async function myFunction() {
+            return "Hello";
+        }
+    </pre>
+
+    <p>Is the same as:</p>
+
+    <pre>
+        async function myFunction() {
+            return Promise.resolve("Hello");
+        }
+    </pre>
+
+    <p>Here is how to use the Promise:</p>
+
+    <pre>
+        myFunction().then(
+            function(value) { /* code if successful */ },
+            function(error) { /* code if some error */ }
+        );
+    </pre>
+
+    <h2>JavaScript async / await</h2>
+
+    <p id="demo"></p>
+
+    <script>
+        function myDisplayer(some) {
+        document.getElementById("demo").innerHTML = some;
+        }
+
+        async function myFunction() {return "Hello";}
+
+        myFunction().then(
+        function(value) {myDisplayer(value);},
+        function(error) {myDisplayer(error);}
+    );
+    </script>
+
+    <p>Or simpler, since you expect a normal value (a normal response, not an error):</p>
+
+    <p id="demo2"></p>
+
+    <script>
+        function myDisplayer2(some) {
+        document.getElementById("demo2").innerHTML = some;
+        }
+
+        async function myFunction2() {return "Hello";}
+
+        myFunction2().then(
+        function(value) {myDisplayer2(value);}
+        );
+    </script>
+
+    <h2>Await Syntax</h2>
+
+    <p>The keyword await before a function makes the function wait for a promise:</p>
+    
+    <pre style="font-family: courier;">let value = await promise;</pre>
+
+    <p>The await keyword can only be used inside an async function.</p>
+
+    <h2>Example</h2>
+
+    <p>Let's go slowly and learn how to use it.</p>
+
+    <h4>Basic Syntax</h4>
+
+    <h1 id="demo3"></h1>
+
+    <script>
+        async function myDisplay3() {
+        let myPromise = new Promise(function(myResolve, myReject) {
+            myResolve("I love You !!");
+        });
+        document.getElementById("demo3").innerHTML = await myPromise;
+        }
+
+        myDisplay3();
+    </script>
+
+    <h4>Waiting for a Timeout</h4>
+
+    <h1 id="demo4"></h1>
+
+    <script>
+        async function myDisplay4() {
+        let myPromise = new Promise(function(myResolve, myReject) {
+            setTimeout(function() { myResolve("I love You !!"); }, 3000);
+        });
+        document.getElementById("demo4").innerHTML = await myPromise;
+        }
+
+        myDisplay4();
+    </script>
+
+    <h4>Waiting for a File</h4>
+
+    <p id="demo5"></p>
+
+    <script>
+        async function getFile5() {
+        let myPromise = new Promise(function(myResolve, myReject) {
+            let req = new XMLHttpRequest();
+            req.open('GET', "mycar.html");
+            req.onload = function() {
+            if (req.status == 200) {
+                myResolve(req.response);
+            } else {
+                myResolve("File not Found");
+            }
+            };
+            req.send();
+        });
+        document.getElementById("demo5").innerHTML = await myPromise;
+        }
+
+        getFile5();
+    </script>
+
+</body>
+</html>

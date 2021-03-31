@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h1>JavaScript Promises</h1>
+
+    <p style="background-color: lightseagreen; width: 500px;">"Producing code" is code that can take some time<br>
+    "Consuming code" is code that must wait for the result<br>
+    A Promise is a JavaScript object that links producing code and consuming code</p>
+
+    <h2>JavaScript Promise Object</h2>
+
+    <p>A JavaScript Promise object contains both the producing code and calls to the consuming code:</p>
+
+    <pre style="font-family: courier;">
+        let myPromise = new Promise(function(myResolve, myReject) {
+        // "Producing Code" (May take some time)
+        
+            myResolve(); // when successful
+            myReject();  // when error
+        });
+        
+        // "Consuming Code" (Must wait for a fulfilled Promise)
+        myPromise.then(
+            function(value) { /* code if successful */ },
+            function(error) { /* code if some error */ }
+            );
+    </pre>
+
+    <p>When the executing code obtains the result, it should call one of the two callbacks:</p>
+
+    <table>
+        <tr>
+            <th>Result</th>
+            <th>Call</th>
+        </tr>
+        <tr>
+            <td>Success</td>
+            <td>myResolve(result value)</td>
+        </tr>
+        <tr>
+            <td>Error</td>
+            <td>myReject(error object)</td>
+        </tr>
+    </table>
+
+    <h2>Promise Object Properties</h2>
+
+    <p>A JavaScript Promise object can be:</p>
+    <ul>
+        <li>Pending</li>
+        <li>Fulfilled</li>
+        <li>Rejected</li>
+    </ul>
+
+    <p>The Promise object supports two properties: <b>state</b> and <b>result</b>.</p>
+    <p>While a Promise object is "pending" (working), the result is undefined.</p>
+    <p>When a Promise object is "fulfilled", the result is a value.</p>
+    <p>When a Promise object is "rejected", the result is an error object.</p>
+
+    <table>
+        <tr>
+            <th>myPromide.state</th>
+            <th>myPromide.result</th>
+        </tr>
+        <tr>
+            <td>"pending"</td>
+            <td>undefined</td>
+        </tr>
+        <tr>
+            <td>"fulfilled</td>
+            <td>a result value</td>
+        </tr>
+        <tr>
+            <td>"rejected"</td>
+            <td>an error object</td>
+        </tr>
+    </table>
+
+    <p style="background-color: yellow; width: 500px;">You cannot access the Promise properties state and result.<br>
+    You must use a Promise method to handle promises.</p>
+
+    <h2>Promise How To</h2>
+
+    <p>Here is how to use a Promise:</p>
+    <pre style="font-size: courier;">
+        myPromise.then(
+            function(value) { /* code if successful */ },
+            function(error) { /* code if some error */ }
+        );
+    </pre>
+
+    <p style="background-color: yellow; width: 500px;">Promise.then() takes two arguments, a callback for success and another for failure.<br>
+    Both are optional, so you can add a callback for success or failure only.</p>
+
+    <p id="demo"></p>
+
+    <script>
+        function myDisplayer(some) {
+        document.getElementById("demo").innerHTML = some;
+        }
+
+        let myPromise = new Promise(function(myResolve, myReject) {
+        let x = 0;
+
+        // some code (try to change x to 5)
+
+        if (x == 0) {
+            myResolve("OK");
+        } else {
+            myReject("Error");
+        }
+        });
+
+        myPromise.then(
+        function(value) {myDisplayer(value);},
+        function(error) {myDisplayer(error);}
+        );
+    </script>
+
+    <h2>JavaScript Promise Examples</h2>
+
+    <p>To demonstrate the use of promises, we will use the callback examples from the previous chapter:</p>
+    <ul>
+        <li>Waiting for a Timeout</li>
+        <li>Waiting for a File</li>
+    </ul>
+
+    <h2>Waiting for a Timeout</h2>
+
+    <h4>Example Using Callback</h4>
+
+    <h1 id="demo2"></h1>
+
+    <script>
+        setTimeout(function() { myFunction2("I love You !!!"); }, 3000);
+
+        function myFunction2(value) {
+        document.getElementById("demo2").innerHTML = value;
+        }
+    </script>
+
+    <h4>Example Using Promise</h4>
+
+    <h1 id="demo3"></h1>
+
+    <script>
+        let myPromise3 = new Promise(function(myResolve, myReject) {
+        setTimeout(function(){ myResolve("I love You !!"); }, 3000);
+        });
+
+        myPromise3.then(function(value) {
+        document.getElementById("demo3").innerHTML = value;
+        });
+    </script>
+
+    <h2>Waiting for a file</h2>
+
+    <h4>Example using Callback</h4>
+
+    <p id="demo4"></p>
+
+    <script>
+        function myDisplayer4(some) {
+        document.getElementById("demo4").innerHTML = some;
+        }
+
+        function getFile4(myCallback) {
+        let req = new XMLHttpRequest();
+        req.open('GET', "mycar.html");
+        req.onload = function() {
+            if (req.status == 200) {
+            myCallback(this.responseText);
+            } else {
+            myCallback("Error: " + req.status);
+            }
+        }
+        req.send();
+        }
+
+        getFile4(myDisplayer4); 
+    </script>
+
+    <h4>Example using Promise</h4>
+
+    <p id="demo5"></p>
+
+    <script>
+        function myDisplayer5(some) {
+        document.getElementById("demo5").innerHTML = some;
+        }
+
+        let myPromise5 = new Promise(function(myResolve, myReject) {
+        let req = new XMLHttpRequest();
+        req.open('GET', "mycar.html");
+        req.onload = function() {
+            if (req.status == 200) {
+            myResolve(req.response);
+            } else {
+            myReject("File not Found");
+            }
+        };
+        req.send();
+        });
+
+        myPromise5.then(
+        function(value) {myDisplayer5(value);},
+        function(error) {myDisplayer5(error);}
+        );
+    </script>
+
+</body>
+</html>
