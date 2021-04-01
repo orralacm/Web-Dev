@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h1>JavaScript HTML DOM - Changing HTML</h1>
+
+    <p>The HTML DOM allows JavaScript to change the content of HTML elements.</p>
+
+    <h2>Changing the HTML Output Stream</h2>
+
+    <p>JavaScript can create dynamic HTML content:</p>
+    <p>In JavaScript, document.write() can be used to write directly to the HTML output stream:</p>
+
+    <script>
+        document.write(Date());
+    </script>
+
+    <p style="background-color: yellow; width: 500px;">Never use document.write() after the document is loaded. It will overwrite the document.</p>
+
+    <h2>Changing HTML Content</h2>
+
+    <p>The easiest way to modify the content of an HTML element is by using the innerHTML property.</p>
+    <p>To change the content of an HTML element, use this syntax:</p>
+    <p style="font-family: courier;">document.getElementById(id).innerHTML = new HTML</p>
+    <p>This example changes the content of a <p> element:</p>
+
+    <p id="p1">Hello World!</p>
+
+    <script>
+        document.getElementById("p1").innerHTML = "New text!";
+    </script>
+
+    <p>Example explained:</p>
+    <ul>
+        <li>The HTML document above contains a <p> element with id="p1"</li>
+        <li>We use the HTML DOM to get the element with id="p1"</li>
+        <li> JavaScript changes the content (innerHTML) of that element to "New text!"</li>
+    </ul>
+
+    <p>This example changes the content of an <h1> element:</p>
+
+    <h1 id="id01">Old Heading</h1>
+
+    <script>
+        var element = document.getElementById("id01");
+        element.innerHTML = "New Heading";
+    </script>
+
+    <p></p>
+    <ul>
+        <li>The HTML document above contains an <h1> element with id="id01"</li>
+        <li>We use the HTML DOM to get the element with id="id01"</li>
+        <li>A JavaScript changes the content (innerHTML) of that element to "New Heading"</li>
+    </ul>
+
+    <h2>Changing the Value of an Attribute</h2>
+
+    <p>To change the value of an HTML attribute, use this syntax:</p>
+    <p style="font-family: courier;">document.getElementById(id).attribute = new value</p>
+    <p>This example changes the value of the src attribute of an <img> element:</p>
+
+    <img id="image" src="smiley.gif" width="160" height="120">
+
+    <script>
+        document.getElementById("image").src = "landscape.jpg";
+    </script>
+
+    <p>Example explained:</p>
+    <ul>
+        <li>The HTML document above contains an <img> element with id="myImage"</li>
+        <li>We use the HTML DOM to get the element with id="myImage"</li>
+        <li>A JavaScript changes the src attribute of that element from "smiley.gif" to "landscape.jpg"</li>
+    </ul>
+
+</body>
+</html> 
