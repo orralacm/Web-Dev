@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h1>JavaScript HTML DOM Elements (Nodes)</h1>
+
+    <p>Adding and Removing Nodes (HTML Elements)</p>
+
+    <h2>Creating New HTML Elements (Nodes)</h2>
+
+    <p>To add a new element to the HTML DOM, you must create the element (element node) first, and then append it to an existing element.</p>
+
+    <div id="div1">
+        <p id="p1">This is a paragraph.</p>
+        <p id="p2">This is another paragraph.</p>
+    </div>
+
+    <script>
+        var para = document.createElement("p");
+        var node = document.createTextNode("This is new.");
+        para.appendChild(node);
+        var element = document.getElementById("div1");
+        element.appendChild(para);
+    </script>
+
+    <h2>Example Explained </h2>
+
+    <p>This code creates a new &lt;p&gt; element:</p>
+    <p style="font-family: courier;">var para = document.createElement("p");</p>
+
+    <p>To add text to the &lt;p&gt; element, you must create a text node first. This code creates a text node:</p>
+    <p style="font-family: courier;">var node = document.createTextNode("This is a new paragraph.");</p>
+
+    <p>Then you must append the text node to the &lt;p&gt; element:</p>
+    <p style="font-family: courier;">para.appendChild(node);</p>
+
+    <p>Finally you must append the new element to an existing element.</p>
+    <p>This code finds an existing element:</p>
+    <p style="font-family: courier;">var element = document.getElementById("div1");</p>
+
+    <p>This code appends the new element to the existing element:</p>
+    <p style="font-family: courier;">element.appendChild(para);</p>
+
+    <h2>Creating new HTML Elements - insertBefore()</h2>
+
+    <p>The appendChild() method in the previous example, appended the new element as the last child of the parent.</p>
+    <p>If you don't want that you can use the insertBefore() method:</p>
+
+    <div id="bdiv1">
+        <p id="bp1">This is a paragraph.</p>
+        <p id="bp2">This is another paragraph.</p>
+    </div>
+    
+    <script>
+        var para = document.createElement("bp");
+        var node = document.createTextNode("This is new.");
+        para.appendChild(node);
+        
+        var element = document.getElementById("bdiv1");
+        var child = document.getElementById("bp1");
+        element.insertBefore(para,child);
+    </script>
+
+    <h2>Removing Existing HTML Elements</h2>
+
+    <p>To remove an HTML element, use the remove() method:</p>
+
+    <div>
+        <p id="cp1">This is a paragraph.</p>
+        <p id="cp2">This is another paragraph.</p>
+    </div>
+    
+    
+    <button onclick="myFunctionc()">Remove Element</button>
+    
+    <script>
+        function myFunctionc() {
+            var elmnt = document.getElementById("cp1");
+            elmnt.remove();
+        }
+    </script>
+
+    <h2>Example Explained</h2>
+
+    <p>The HTML document contains a <div> element with two child nodes (two <p> elements):</p>
+
+    <pre style="font-family: courier;">
+        &lt;div&gt;
+            &lt;p id="p1"&gt;This is a paragraph.&lt;/p&gt;
+            &lt;p id="p2"&gt;This is another paragraph.&lt;/p&gt;
+        &lt;/div&gt;
+    </pre>
+
+    <p>Find the element you want to remove:</p>
+    <p style="font-family: courier;">var elmnt = document.getElementById("p1");</p>
+
+    <p>Then execute the remove() method on that element:</p>
+    <p style="font-family: courier;">elmnt.remove();</p>
+
+    <p style="background-color: lightpink;">The remove() method does not work in older browsers, see the example below on how to use removeChild() instead.</p>
+
+    <h2>Removing a Child Node</h2>
+
+    <p>For browsers that does not support the remove() method, you have to find the parent node to remove an element:</p>
+
+    <div id="ddiv1">
+        <p id="dp1">This is a paragraph.</p>
+        <p id="dp2">This is another paragraph.</p>
+    </div>
+    
+    <script>
+        var parentd = document.getElementById("ddiv1");
+        var childd = document.getElementById("dp1");
+        parent.removeChild(child);
+    </script>
+
+    <h2>Example Explained </h2>
+
+    <p>This HTML document contains a <div> element with two child nodes (two <p> elements):</p>
+    <pre style="font-family: courier;">
+        &lt;div id="div1"&gt;
+            &lt;p id="p1"&gt;This is a paragraph.&lt;/p&gt;
+            &lt;p id="p2"&gt;This is another paragraph.&lt;/p&gt;
+        &lt;/div&gt;
+    </pre>
+
+    <p>Find the element with id="div1":</p>
+    <p style="font-family: courier;">var parent = document.getElementById("div1");</p>
+
+    <p>Find the <p> element with id="p1":</p>
+    <p style="font-family: courier;">var child = document.getElementById("p1");</p>
+
+    <p>Remove the child from the parent:</p>
+    <p style="font-family: courier;">parent.removeChild(child);</p>
+
+    <p>Here is a common workaround: Find the child you want to remove, and use its parentNode property to find the parent:</p>
+    <pre style="font-family: courier;">
+        var child = document.getElementById("p1");
+        child.parentNode.removeChild(child);
+    </pre>
+
+    <h2>Replacing HTML Elements </h2>
+
+    <p>To replace an element to the HTML DOM, use the replaceChild() method:</p>
+
+    <div id="ddiv1">
+        <p id="dp1">This is a paragraph.</p>
+        <p id="dp2">This is another paragraph.</p>
+    </div>
+    
+    <script>
+        var parentd = document.getElementById("ddiv1");
+        var childd = document.getElementById("dp1");
+        var parad = document.createElement("dp");
+        var noded = document.createTextNode("This is new.");
+        para.appendChild(noded);
+        parent.replaceChild(parad,childd);
+    </script>
+
+</body>
+</html>
