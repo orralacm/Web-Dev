@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h1>JavaScript HTML DOM Node Lists</h1>
+
+    <h2>The HTML DOM NodeList Object</h2>
+
+    <p>A NodeList object is a list (collection) of nodes extracted from a document.</p>    
+    <p>A NodeList object is almost the same as an HTMLCollection object.</p>
+    <p>Some (older) browsers return a NodeList object instead of an HTMLCollection for methods like getElementsByClassName().</p>
+    <p>All browsers return a NodeList object for the property childNodes. </p>
+    <p>Most browsers return a NodeList object for the method querySelectorAll().</p>
+    <p>The following code selects all <p> nodes in a document:</p>
+
+    <h4>Example</h4>
+    <p style="font-family: courier;">var myNodeList = document.querySelectorAll("p");</p>
+
+    <p>The elements in the NodeList can be accessed by an index number.</p>
+    <p>To access the second &lt;p&gt; node you can write:</p>
+    <p style="font-family: courier;">y = myNodeList[1];</p>
+
+    <h5>Hello World!</h5>
+    <h5>Hello Norway!</h5>
+
+    <p id="demo"></p>
+
+    <script>
+        var myNodelist = document.querySelectorAll("h5");
+        document.getElementById("demo").innerHTML =
+        "The innerHTML of the second header (h5) is: " +
+        myNodelist[1].innerHTML;
+    </script>
+
+    <p>Note: The index starts at 0.</p>
+
+    <h2>HTML DOM Node List Length</h2>
+
+    <p>The length property defines the number of nodes in a node list:</p>
+
+    <p id="demo2"></p>
+
+    <script>
+        var myNodelist = document.querySelectorAll("h5");
+        document.getElementById("demo2").innerHTML =
+        "This document contains " + myNodelist.length + " headers (h5).";
+    </script>
+
+    <p>Example explained:</p>
+    <ol>
+        <li>Create a list of all &lt;h5&gt; elements</li>
+        <li>Display the length of the list</li>
+    </ol>
+
+    <p>The length property is useful when you want to loop through the nodes in a node list:</p>
+
+    <p>Click the button to change the color of all h5 elements.</p>
+
+    <button onclick="myFunction()">Try it</button>
+
+    <script>
+        function myFunction() {
+        var myNodelist = document.querySelectorAll("h5");
+        var i;
+        for (i = 0; i < myNodelist.length; i++) {
+            myNodelist[i].style.color = "red";
+        }
+        }
+    </script>
+
+    <h2>The Difference Between an HTMLCollection and a NodeList</h2>
+
+    <p>An HTMLCollection (previous chapter) is a collection of HTML elements.</p>
+    <p>A NodeList is a collection of document nodes.</p>
+    <p>A NodeList and an HTML collection is very much the same thing.</p>
+    <p>Both an HTMLCollection object and a NodeList object is an array-like list (collection) of objects.</p>
+    <p>Both have a length property defining the number of items in the list (collection).</p>
+    <p>Both provide an index (0, 1, 2, 3, 4, ...) to access each item like an array.</p>
+    <p>HTMLCollection items can be accessed by their name, id, or index number.</p>
+    <p>NodeList items can only be accessed by their index number.</p>
+    <p>Only the NodeList object can contain attribute nodes and text nodes.</p>
+
+    <p style="background-color: yellow; width: 500px;">
+    <b>A node list is not an array!</b><br>
+    A node list may look like an array, but it is not.<br>
+    You can loop through the node list and refer to its nodes like an array.<br>
+    However, you cannot use Array Methods, like valueOf(), push(), pop(), or join() on a node list.
+    </p>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h1>JavaScript HTML DOM Collections</h1>
+
+    <h2>The HTMLCollection Object</h2>
+
+    <p>The getElementsByTagName() method returns an HTMLCollection object.</p>
+    <p>An HTMLCollection object is an array-like list (collection) of HTML elements.</p>
+    <p>The following code selects all &lt;p&gt; elements in a document:</p>
+    <p style="font-family: courier;">var x = document.getElementsByTagName("p");</p>
+
+    <p>The elements in the collection can be accessed by an index number.</p>
+    <p>To access the second <p> element you can write:</p>
+    <p style="font-family: courier;">y = x[1];</p>
+
+    <h3>Example</h3>
+
+    <h5>Hello World!</h5>
+    <h5>Hello Norway!</h5>
+
+    <p id="demo"></p>
+
+    <script>
+        var myCollection = document.getElementsByTagName("h5");
+        document.getElementById("demo").innerHTML =
+        "The innerHTML of the second header (h5) is: " +
+        myCollection[1].innerHTML;
+    </script>
+
+    <p>Note: The index starts at 0.</p>
+
+    <h2>HTML HTMLCollection Length</h2>
+
+    <p>The length property defines the number of elements in an HTMLCollection:
+
+    <p id="demo2"></p>
+
+    <script>
+        var myCollection = document.getElementsByTagName("h5");
+        document.getElementById("demo2").innerHTML = 
+        "This document contains " + myCollection.length + " headers (h5).";
+    </script>
+
+    </p>
+
+    <p>Example explained:</p>
+    <ol>
+        <li>Create a collection of all &lt;p&gt; elements</li>
+        <li>Display the length of the collection</li>
+    </ol>
+
+    <p>The length property is useful when you want to loop through the elements in a collection:</p>
+
+    <h3>Example</h3>
+
+    <p>Change the background color of all <p> elements:</p>
+
+    <h4>Hello World!</h4>
+    <h4>Hello Norway!</h4>
+
+    <p>Click the button to change the color of all h4 elements.</p>
+
+    <button onclick="myFunction()">Try it</button>
+
+    <script>
+        function myFunction() {
+        var myCollection = document.getElementsByTagName("h4");
+        var i;
+        for (i = 0; i < myCollection.length; i++) {
+            myCollection[i].style.color = "red";
+        }
+        }
+    </script>
+
+    <p style="background-color: yellow; width: 500px;">
+        An HTMLCollection is NOT an array!<br>
+        An HTMLCollection may look like an array, but it is not.<br>
+        You can loop through the list and refer to the elements with a number (just like an array).<br>
+        However, you cannot use array methods like valueOf(), pop(), push(), or join() on an HTMLCollection.
+    </p>
+
+</body>
+</html>
